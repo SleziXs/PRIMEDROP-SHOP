@@ -1,638 +1,198 @@
-```html
 <!DOCTYPE html>
-<html lang="hu" class="dark">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PrimeDrop | Premium Streetwear</title>
-    <!-- Telegram WebApp SDK -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeDrop Store</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        gold: {
-                            DEFAULT: '#D4AF37',
-                            light: '#F3E5AB',
-                            dark: '#AA820A',
-                            glow: 'rgba(212, 175, 55, 0.3)'
-                        },
-                        dark: {
-                            bg: '#0A0A0C',
-                            card: '#121216',
-                            border: '#22222A',
-                            accent: '#181820'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'pulse-glow': 'pulseGlow 2s infinite',
-                        'flash-red': 'flashRed 1.5s infinite',
-                    },
-                    keyframes: {
-                        pulseGlow: {
-                            '0%, 100%': { boxShadow: '0 0 15px rgba(212, 175, 55, 0.2)' },
-                            '50%': { boxShadow: '0 0 25px rgba(212, 175, 55, 0.5)' },
-                        },
-                        flashRed: {
-                            '0%, 100%': { opacity: '1' },
-                            '50%': { opacity: '0.4' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #161616;
+            --accent-color: #f59e0b;
+            --text-color: #ffffff;
+            --text-secondary: #a1a1aa;
+            --border-color: #27272a;
+        }
         body {
-            background-color: #0A0A0C;
-            color: #F3F4F6;
-            font-family: 'Inter', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 16px;
+            padding-bottom: 80px;
         }
-
-        .glass-panel {
-            background: rgba(18, 18, 22, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        h1, h2, h3 { margin: 0 0 10px 0; }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
         }
-
-        .glass-card {
-            background: linear-gradient(145deg, rgba(24, 24, 32, 0.8), rgba(14, 14, 18, 0.9));
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(212, 175, 55, 0.15);
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--accent-color);
         }
-
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #FFF099 0%, #D4AF37 50%, #AA820A 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .cart-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
         }
-
-        .gold-btn {
-            background: linear-gradient(135deg, #E5C158 0%, #D4AF37 50%, #997300 100%);
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
-            transition: all 0.2s ease;
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
         }
-
-        .gold-btn:active {
-            transform: scale(0.97);
-            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 12px;
         }
-
-        /* Hide scrollbars */
-        .no-scrollbar::-webkit-scrollbar {
+        .product-img {
+            width: 100%;
+            height: 180px;
+            background: #222;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .product-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+        .product-price {
+            color: var(--accent-color);
+            font-weight: 800;
+            font-size: 18px;
+            margin: 6px 0;
+        }
+        .btn {
+            background: var(--accent-color);
+            color: #000;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        .cart-modal {
             display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 100;
+            padding: 20px;
+            box-sizing: border-box;
         }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        .cart-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 40px auto;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
         }
     </style>
 </head>
-<body class="pb-24">
-
-    <!-- TOP IMPULSE BANNER -->
-    <div class="bg-gradient-to-r from-red-900/90 via-gold-dark/80 to-red-900/90 text-white text-xs font-semibold py-2 px-3 text-center sticky top-0 z-40 shadow-lg flex items-center justify-center gap-2 border-b border-gold/30">
-        <span class="flex h-2 w-2 relative">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
-        </span>
-        <span>⚡ 15 percen belül rendelve <strong class="text-gold-light underline">MA FELADJUK!</strong></span>
+<body>
+    <div class="header">
+        <div class="logo">PRIMEDROP ⚡</div>
+        <button class="cart-btn" onclick="toggleCart()">🛒 Kosár (<span id="cart-count">0</span>)</button>
     </div>
 
-    <!-- HEADER / BRANDING -->
-    <header class="px-4 py-4 flex items-center justify-between border-b border-white/5 sticky top-[33px] bg-dark-bg/90 backdrop-blur-md z-30">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold via-gold-dark to-black p-[1px] shadow-lg shadow-gold/10">
-                <div class="w-full h-full bg-dark-bg rounded-[11px] flex items-center justify-center">
-                    <span class="font-extrabold text-lg gold-gradient-text tracking-tighter">PD</span>
-                </div>
-            </div>
-            <div>
-                <h1 class="font-black text-lg tracking-wider gold-gradient-text uppercase">PRIMEDROP</h1>
-                <p class="text-[10px] text-gray-400 font-medium tracking-widest uppercase">Verified Luxury Streetwear</p>
-            </div>
+    <div class="products-grid">
+        <div class="product-card">
+            <div class="product-img">Nike Dunk Low 'Panda'</div>
+            <div class="product-title">Nike Dunk Low 'Panda'</div>
+            <div class="product-price">49 990 Ft</div>
+            <button class="btn" onclick="addToCart('Nike Dunk Low Panda', 49990)">Kosárba ⚡</button>
         </div>
-
-        <!-- Social Proof Pill -->
-        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] text-gray-300">
-            <i class="fa-solid fa-eye text-gold animate-pulse"></i>
-            <span id="live-views" class="font-bold text-white">14</span> nézi
-        </div>
-    </header>
-
-    <!-- COUNTDOWN FLASH SALE BANNER -->
-    <section class="p-4">
-        <div class="glass-card rounded-2xl p-3.5 relative overflow-hidden border border-gold/30">
-            <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-gold/10 rounded-full blur-xl pointer-events-none"></div>
-            <div class="flex items-center justify-between">
-                <div>
-                    <span class="bg-red-500/20 text-red-400 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md border border-red-500/30">Villámakció</span>
-                    <h3 class="font-bold text-sm text-white mt-1">Exkluzív Drop – VIP Árak</h3>
-                </div>
-                <div class="text-right">
-                    <div class="text-[10px] text-gray-400 uppercase font-semibold">Lejár:</div>
-                    <div id="countdown" class="font-mono font-black text-gold text-base tracking-wider">00:14:52</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CATEGORY FILTERS -->
-    <section class="px-4 mb-4">
-        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
-            <button onclick="filterCategory('all')" class="cat-btn active bg-gold text-black font-bold text-xs px-4 py-2 rounded-xl whitespace-nowrap transition-all shadow-md">Összes</button>
-            <button onclick="filterCategory('cipok')" class="cat-btn bg-dark-card border border-white/10 text-gray-300 font-semibold text-xs px-4 py-2 rounded-xl whitespace-nowrap transition-all">👟 Cipők</button>
-            <button onclick="filterCategory('puloverek')" class="cat-btn bg-dark-card border border-white/10 text-gray-300 font-semibold text-xs px-4 py-2 rounded-xl whitespace-nowrap transition-all">🔥 Pulóverek</button>
-            <button onclick="filterCategory('kiegeszitok')" class="cat-btn bg-dark-card border border-white/10 text-gray-300 font-semibold text-xs px-4 py-2 rounded-xl whitespace-nowrap transition-all">🎒 Kiegészítők</button>
-        </div>
-    </section>
-
-    <!-- PRODUCT GRID -->
-    <section class="px-4">
-        <div id="product-grid" class="grid grid-cols-2 gap-3.5">
-            <!-- Products injected via JS -->
-        </div>
-    </section>
-
-    <!-- FLOATING CART BAR -->
-    <div id="cart-bar" class="fixed bottom-4 left-4 right-4 z-40 hidden transition-all duration-300">
-        <div class="glass-panel bg-dark-card/95 border border-gold/40 rounded-2xl p-3 shadow-2xl flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="relative">
-                    <div class="w-11 h-11 bg-gold/20 rounded-xl flex items-center justify-center border border-gold/40 text-gold">
-                        <i class="fa-solid fa-bag-shopping text-lg"></i>
-                    </div>
-                    <span id="cart-count-badge" class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-dark-bg">0</span>
-                </div>
-                <div>
-                    <div class="text-[10px] text-gray-400 font-medium">Végösszeg:</div>
-                    <div id="cart-total-price" class="font-extrabold text-base text-white">0 Ft</div>
-                </div>
-            </div>
-            
-            <button onclick="openCheckoutModal()" class="gold-btn text-black font-extrabold text-xs px-5 py-3 rounded-xl flex items-center gap-2">
-                <span>PÉNZTÁR</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            </button>
+        <div class="product-card">
+            <div class="product-img">Trapstar Puffer Jacket</div>
+            <div class="product-title">Trapstar Irongate Puffer</div>
+            <div class="product-price">89 990 Ft</div>
+            <button class="btn" onclick="addToCart('Trapstar Irongate Puffer', 89990)">Kosárba ⚡</button>
         </div>
     </div>
 
-    <!-- PRODUCT DETAIL MODAL -->
-    <div id="product-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all">
-        <div class="bg-dark-card border-t sm:border border-white/10 rounded-t-3xl sm:rounded-3xl w-full max-w-lg max-h-[90vh] overflow-y-auto p-5 relative text-white shadow-2xl">
-            <button onclick="closeProductModal()" class="absolute top-4 right-4 w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-gray-400 hover:text-white">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <div class="relative rounded-2xl overflow-hidden mb-4 bg-black/40 border border-white/5">
-                <img id="modal-img" src="" alt="" class="w-full h-64 object-cover">
-                <span id="modal-stock-tag" class="absolute top-3 left-3 bg-red-500/90 text-white text-[10px] font-black px-2.5 py-1 rounded-full backdrop-blur-md">
-                    🔥 Csak 2 db maradt
-                </span>
-            </div>
-
-            <div class="flex items-start justify-between mb-2">
-                <div>
-                    <h2 id="modal-title" class="font-extrabold text-lg text-white"></h2>
-                    <p id="modal-cat" class="text-xs text-gray-400"></p>
-                </div>
-                <div class="text-right">
-                    <div id="modal-price" class="font-black text-xl text-gold"></div>
-                    <div id="modal-old-price" class="text-xs text-gray-500 line-through"></div>
-                </div>
-            </div>
-
-            <!-- Size Selection -->
-            <div class="my-4">
-                <label class="block text-xs font-bold text-gray-300 mb-2 uppercase tracking-wider">Válassz méretet:</label>
-                <div id="modal-sizes" class="flex flex-wrap gap-2">
-                    <!-- Sizes injected via JS -->
-                </div>
-            </div>
-
-            <!-- Urgent Callout -->
-            <div class="bg-gold/10 border border-gold/20 rounded-xl p-3 mb-5 flex items-center gap-3">
-                <i class="fa-solid fa-truck-fast text-gold text-lg"></i>
-                <div class="text-xs">
-                    <span class="font-bold text-gold">Ingyenes GLS/Foxpost szállítás!</span>
-                    <p class="text-gray-400 text-[11px]">2-4 munkanapos diszkrét kézbesítés.</p>
-                </div>
-            </div>
-
-            <button onclick="addToCartFromModal()" class="w-full gold-btn text-black font-extrabold py-3.5 rounded-xl flex items-center justify-center gap-2 text-sm uppercase tracking-wider">
-                <i class="fa-solid fa-cart-plus"></i>
-                <span>Kosárba teszem</span>
-            </button>
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-content">
+            <h2>Kosár tartalma</h2>
+            <div id="cart-items"></div>
+            <h3>Összesen: <span id="cart-total">0</span> Ft</h3>
+            <button class="btn" onclick="checkout()">Rendelés leadása 🚀</button>
+            <button class="btn" style="background:#333; color:#fff; margin-top:10px;" onclick="toggleCart()">Bezárás</button>
         </div>
     </div>
 
-    <!-- CHECKOUT MODAL -->
-    <div id="checkout-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
-        <div class="bg-dark-card border-t sm:border border-white/10 rounded-t-3xl sm:rounded-3xl w-full max-w-lg max-h-[92vh] overflow-y-auto p-5 relative text-white shadow-2xl">
-            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-gray-400 hover:text-white">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <h2 class="font-black text-xl text-white mb-1 flex items-center gap-2">
-                <span>Rendelés Leadása</span>
-                <span class="text-xs bg-gold/20 text-gold px-2 py-0.5 rounded-md border border-gold/30">Biztonságos</span>
-            </h2>
-            <p class="text-xs text-gray-400 mb-4">Adatok megadása után azonnal átirányítunk Telegramra.</p>
-
-            <!-- Cart Items Summary -->
-            <div class="bg-black/30 rounded-2xl p-3 border border-white/5 mb-4 max-h-36 overflow-y-auto" id="checkout-items-list">
-                <!-- Cart items list injected via JS -->
-            </div>
-
-            <!-- Free Shipping Progress -->
-            <div class="mb-4">
-                <div class="flex justify-between text-xs mb-1">
-                    <span class="text-gray-400">Ingyenes szállítási keret:</span>
-                    <span id="shipping-progress-text" class="text-gold font-bold">100%</span>
-                </div>
-                <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                    <div id="shipping-progress-bar" class="h-full bg-gold transition-all duration-500" style="width: 100%"></div>
-                </div>
-            </div>
-
-            <!-- Form -->
-            <form id="order-form" onsubmit="submitOrder(event)" class="space-y-3">
-                <div>
-                    <label class="block text-[11px] font-bold text-gray-300 uppercase mb-1">Teljes Név *</label>
-                    <input type="text" id="cust-name" required placeholder="pl. Kovács Máté" class="w-full bg-black/50 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-gold">
-                </div>
-
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="block text-[11px] font-bold text-gray-300 uppercase mb-1">Telefonszám *</label>
-                        <input type="tel" id="cust-phone" required placeholder="+36 30 123 4567" class="w-full bg-black/50 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-gold">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-bold text-gray-300 uppercase mb-1">Város / Irányítószám *</label>
-                        <input type="text" id="cust-city" required placeholder="1051 Budapest" class="w-full bg-black/50 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-gold">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-[11px] font-bold text-gray-300 uppercase mb-1">Pontos Cím (Utca, Házszám) *</label>
-                    <input type="text" id="cust-address" required placeholder="Kossuth Lajos utca 12. 3/B" class="w-full bg-black/50 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-gold">
-                </div>
-
-                <div>
-                    <label class="block text-[11px] font-bold text-gray-300 uppercase mb-1">Megjegyzés / Csomagpont név (Opcionális)</label>
-                    <input type="text" id="cust-note" placeholder="pl. Foxpost / GLS automata név" class="w-full bg-black/50 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-gold">
-                </div>
-
-                <button type="submit" class="w-full gold-btn text-black font-black py-4 rounded-xl flex items-center justify-center gap-2 text-sm uppercase tracking-wider mt-2 shadow-xl">
-                    <i class="fa-paper-plane fa-solid"></i>
-                    <span>Rendelés Küldése Telegramon</span>
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Telegram WebApp Initialization
-        let tg = window.Telegram?.WebApp;
-        if (tg) {
-            tg.expand();
-            tg.enableClosingConfirmation();
-        }
-
-        // TARGET ADMIN USERNAME FOR ORDER SUBMISSION
-        const ADMIN_USERNAME = "BSleziB"; 
-
-        // SAMPLE PRODUCTS DATA
-        const products = [
-            {
-                id: 1,
-                name: "Nike Dunk Low 'Panda'",
-                category: "cipok",
-                price: 49900,
-                oldPrice: 59900,
-                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80",
-                sizes: ["40", "41", "42", "42.5", "43", "44"],
-                stock: 3,
-                views: 28
-            },
-            {
-                id: 2,
-                name: "Trapstar Irongate Puffer Jacket",
-                category: "puloverek",
-                price: 89900,
-                oldPrice: 109900,
-                image: "https://images.unsplash.com/photo-1544441893-675973e31985?w=600&q=80",
-                sizes: ["S", "M", "L", "XL"],
-                stock: 2,
-                views: 42
-            },
-            {
-                id: 3,
-                name: "Sp5der Worldwide Hoodie Black",
-                category: "puloverek",
-                price: 64900,
-                oldPrice: 74900,
-                image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&q=80",
-                sizes: ["M", "L", "XL"],
-                stock: 1,
-                views: 19
-            },
-            {
-                id: 4,
-                name: "Supreme Canvas Shoulder Bag",
-                category: "kiegeszitok",
-                price: 29900,
-                oldPrice: 34900,
-                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80",
-                sizes: ["ONE SIZE"],
-                stock: 4,
-                views: 11
-            }
-        ];
-
         let cart = [];
-        let selectedProduct = null;
-        let selectedSize = null;
+        const tg = window.Telegram.WebApp;
+        tg.expand();
 
-        // RENDER PRODUCTS
-        function renderProducts(items) {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = '';
-
-            items.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'glass-card rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer group border border-white/5 hover:border-gold/30 transition-all';
-                card.onclick = () => openProductModal(product.id);
-
-                card.innerHTML = `
-                    <div>
-                        <div class="relative aspect-square overflow-hidden bg-black/40">
-                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-2 left-2 bg-red-500/90 text-white text-[9px] font-black px-2 py-0.5 rounded-md backdrop-blur-md">
-                                🔥 Csak ${product.stock} db
-                            </span>
-                        </div>
-                        <div class="p-3">
-                            <h3 class="font-bold text-xs text-white line-clamp-1">${product.name}</h3>
-                            <div class="flex items-baseline gap-1.5 mt-1">
-                                <span class="font-black text-sm text-gold">${product.price.toLocaleString('hu-HU')} Ft</span>
-                                <span class="text-[10px] text-gray-500 line-through">${product.oldPrice.toLocaleString('hu-HU')} Ft</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="px-3 pb-3">
-                        <button class="w-full bg-white/5 border border-white/10 hover:border-gold text-gray-200 text-[11px] font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-1">
-                            <i class="fa-solid fa-eye text-gold text-[10px]"></i>
-                            <span>Megtekintés</span>
-                        </button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
+        function addToCart(name, price) {
+            cart.push({name, price});
+            document.getElementById('cart-count').innerText = cart.length;
+            tg.HapticFeedback.impactOccurred('medium');
+            alert(name + ' hozzáadva a kosárhoz!');
         }
 
-        // FILTER CATEGORY
-        function filterCategory(cat) {
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.classList.remove('bg-gold', 'text-black', 'font-bold');
-                btn.classList.add('bg-dark-card', 'text-gray-300', 'border', 'border-white/10');
-            });
-            event.target.classList.add('bg-gold', 'text-black', 'font-bold');
-            event.target.classList.remove('bg-dark-card', 'border-white/10');
-
-            if (cat === 'all') {
-                renderProducts(products);
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
             } else {
-                renderProducts(products.filter(p => p.category === cat));
+                modal.style.display = 'block';
+                renderCart();
             }
         }
 
-        // OPEN PRODUCT MODAL
-        function openProductModal(id) {
-            selectedProduct = products.find(p => p.id === id);
-            selectedSize = selectedProduct.sizes[0]; // Default size
-
-            document.getElementById('modal-img').src = selectedProduct.image;
-            document.getElementById('modal-title').innerText = selectedProduct.name;
-            document.getElementById('modal-cat').innerText = `Kategória: ${selectedProduct.category.toUpperCase()}`;
-            document.getElementById('modal-price').innerText = `${selectedProduct.productPrice ? selectedProduct.productPrice.toLocaleString('hu-HU') : selectedProduct.price.toLocaleString('hu-HU')} Ft`;
-            document.getElementById('modal-old-price').innerText = `${selectedProduct.oldPrice.toLocaleString('hu-HU')} Ft`;
-            document.getElementById('modal-stock-tag').innerText = `🔥 Csak ${selectedProduct.stock} db maradt ezen az áron!`;
-
-            // Render sizes
-            const sizeContainer = document.getElementById('modal-sizes');
-            sizeContainer.innerHTML = '';
-            selectedProduct.sizes.forEach(size => {
-                const sizeBtn = document.createElement('button');
-                sizeBtn.type = 'button';
-                sizeBtn.className = `px-3.5 py-2 rounded-xl text-xs font-bold transition-all border ${size === selectedSize ? 'bg-gold text-black border-gold shadow-md shadow-gold/20' : 'bg-black/40 text-gray-300 border-white/10'}`;
-                sizeBtn.innerText = size;
-                sizeBtn.onclick = (e) => {
-                    e.stopPropagation();
-                    selectedSize = size;
-                    document.querySelectorAll('#modal-sizes button').forEach(b => {
-                        b.className = 'px-3.5 py-2 rounded-xl text-xs font-bold transition-all border bg-black/40 text-gray-300 border-white/10';
-                    });
-                    sizeBtn.className = 'px-3.5 py-2 rounded-xl text-xs font-bold transition-all border bg-gold text-black border-gold shadow-md shadow-gold/20';
-                };
-                sizeContainer.appendChild(sizeBtn);
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';
+            let total = 0;
+            cart.forEach((item) => {
+                total += item.price;
+                container.innerHTML += `<div class="cart-item"><span>${item.name}</span><span>${item.price} Ft</span></div>`;
             });
-
-            document.getElementById('product-modal').classList.remove('hidden');
+            document.getElementById('cart-total').innerText = total;
         }
 
-        function closeProductModal() {
-            document.getElementById('product-modal').classList.add('hidden');
-        }
-
-        // CART LOGIC
-        function addToCartFromModal() {
-            if (!selectedProduct) return;
-
-            const existingIndex = cart.findIndex(item => item.id === selectedProduct.id && item.size === selectedSize);
-            if (existingIndex > -1) {
-                cart[existingIndex].qty += 1;
-            } else {
-                cart.push({
-                    id: selectedProduct.id,
-                    name: selectedProduct.name,
-                    price: selectedProduct.price,
-                    size: selectedSize,
-                    image: selectedProduct.image,
-                    qty: 1
-                });
+        function checkout() {
+            if(cart.length === 0) {
+                alert('A kosarad üres!');
+                return;
             }
-
-            closeProductModal();
-            updateCartUI();
-
-            // Vibrate feedback if TG API available
-            if (tg && tg.HapticFeedback) {
-                tg.HapticFeedback.notificationOccurred('success');
-            }
+            let text = "Új rendelés a Mini Appból:\n";
+            cart.forEach(i => text += `- ${i.name} (${i.price} Ft)\n`);
+            tg.sendData(text);
         }
-
-        function updateCartUI() {
-            const cartBar = document.getElementById('cart-bar');
-            const cartBadge = document.getElementById('cart-count-badge');
-            const cartTotal = document.getElementById('cart-total-price');
-
-            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-
-            if (totalItems > 0) {
-                cartBar.classList.remove('hidden');
-                cartBadge.innerText = totalItems;
-                cartTotal.innerText = `${totalPrice.toLocaleString('hu-HU')} Ft`;
-            } else {
-                cartBar.classList.add('hidden');
-            }
-        }
-
-        // CHECKOUT MODAL LOGIC
-        function openCheckoutModal() {
-            const itemsList = document.getElementById('checkout-items-list');
-            itemsList.innerHTML = '';
-
-            let totalPrice = 0;
-
-            cart.forEach((item, idx) => {
-                totalPrice += item.price * item.qty;
-                const row = document.createElement('div');
-                row.className = 'flex items-center justify-between py-2 border-b border-white/5 last:border-none';
-                row.innerHTML = `
-                    <div class="flex items-center gap-2.5">
-                        <img src="${item.image}" class="w-10 h-10 rounded-lg object-cover">
-                        <div>
-                            <div class="font-bold text-xs text-white">${item.name}</div>
-                            <div class="text-[10px] text-gold">Méret: ${item.size} | ${item.qty}x</div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="font-extrabold text-xs text-white">${(item.price * item.qty).toLocaleString('hu-HU')} Ft</span>
-                        <button onclick="removeItemFromCart(${idx})" class="text-gray-500 hover:text-red-400 text-xs px-1">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </div>
-                `;
-                itemsList.appendChild(row);
-            });
-
-            // Auto-fill Telegram user data if available
-            if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
-                const user = tg.initDataUnsafe.user;
-                if (user.first_name) {
-                    document.getElementById('cust-name').value = `${user.first_name} ${user.last_name || ''}`.trim();
-                }
-            }
-
-            document.getElementById('checkout-modal').classList.remove('hidden');
-        }
-
-        function closeCheckoutModal() {
-            document.getElementById('checkout-modal').classList.add('hidden');
-        }
-
-        function removeItemFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-            if (cart.length === 0) {
-                closeCheckoutModal();
-            } else {
-                openCheckoutModal();
-            }
-        }
-
-        // SUBMIT ORDER TO TELEGRAM
-        function submitOrder(e) {
-            e.preventDefault();
-
-            const name = document.getElementById('cust-name').value.trim();
-            const phone = document.getElementById('cust-phone').value.trim();
-            const city = document.getElementById('cust-city').value.trim();
-            const address = document.getElementById('cust-address').value.trim();
-            const note = document.getElementById('cust-note').value.trim();
-
-            let total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-
-            // Construct formatted message
-            let message = `🛒 *ÚJ PRIMEDROP RENDELÉS*\n\n`;
-            message += `👤 *Vevő:* ${name}\n`;
-            message += `📞 *Tel:* ${phone}\n`;
-            message += `📍 *Cím:* ${city}, ${address}\n`;
-            if (note) message += `📝 *Megjegyzés:* ${note}\n`;
-            message += `\n────────────────\n📦 *RENDELT TERMÉKEK:*\n`;
-
-            cart.forEach((item, i) => {
-                message += `${i+1}. *${item.name}*\n   • Méret: ${item.size}\n   • Mennyiség: ${item.qty} db\n   • Ár: ${(item.price * item.qty).toLocaleString('hu-HU')} Ft\n`;
-            });
-
-            message += `────────────────\n💳 *ÖSSZESEN:* ${total.toLocaleString('hu-HU')} Ft\n`;
-            message += `🚚 *Szállítás:* INGYENES\n\n`;
-            message += `✨ _Kérlek igazold vissza a rendelésemet és küldd el az utalási adatokat!_`;
-
-            // Open Direct Chat with Admin on Telegram
-            const encodedText = encodeURIComponent(message);
-            const telegramUrl = `https://t.me/${ADMIN_USERNAME}?text=${encodedText}`;
-
-            if (tg) {
-                tg.openTelegramLink(telegramUrl);
-                tg.close();
-            } else {
-                window.location.href = telegramUrl;
-            }
-        }
-
-        // COUNTDOWN TIMER
-        function startCountdown() {
-            let seconds = 892; // ~14 mins
-            const timerEl = document.getElementById('countdown');
-            setInterval(() => {
-                seconds--;
-                if (seconds < 0) seconds = 900;
-                const m = Math.floor(seconds / 60).toString().padStart(2, '0');
-                const s = (seconds % 60).toString().padStart(2, '0');
-                timerEl.innerText = `00:${m}:${s}`;
-            }, 1000);
-        }
-
-        // LIVE VIEWS SIMULATOR
-        function startLiveViews() {
-            const viewsEl = document.getElementById('live-views');
-            setInterval(() => {
-                const current = parseInt(viewsEl.innerText);
-                const change = Math.floor(Math.random() * 5) - 2;
-                let newViews = current + change;
-                if (newViews < 11) newViews = 12;
-                if (newViews > 35) newViews = 29;
-                viewsEl.innerText = newViews;
-            }, 4000);
-        }
-
-        // INITIALIZE
-        window.onload = function() {
-            renderProducts(products);
-            startCountdown();
-            startLiveViews();
-        };
     </script>
 </body>
 </html>
-```
