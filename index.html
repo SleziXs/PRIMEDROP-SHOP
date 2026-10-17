@@ -83,7 +83,7 @@
             font-weight: 600;
             text-transform: uppercase;
         }
-        select {
+        select, input, textarea {
             width: 100%;
             background: #111113;
             color: var(--text-color);
@@ -93,6 +93,10 @@
             font-size: 14px;
             outline: none;
             margin-bottom: 8px;
+            box-sizing: border-box;
+        }
+        select:focus, input:focus, textarea:focus {
+            border-color: var(--accent-color);
         }
         .btn {
             background: var(--accent-color);
@@ -124,8 +128,8 @@
             border-radius: 16px;
             padding: 20px;
             max-width: 500px;
-            margin: 40px auto;
-            max-height: 80vh;
+            margin: 20px auto;
+            max-height: 90vh;
             overflow-y: auto;
         }
         .cart-item {
@@ -145,6 +149,12 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 12px;
+        }
+        .checkout-section {
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            text-align: left;
         }
     </style>
 </head>
@@ -320,12 +330,40 @@
 
     </div>
 
+    <!-- Kosár Modál -->
     <div id="cartModal" class="cart-modal">
         <div class="cart-content">
             <h2>Kosár tartalma</h2>
             <div id="cart-items"></div>
             <h3>Összesen: <span id="cart-total">0</span> Ft</h3>
-            <button class="btn" onclick="checkout()">Rendelés leadása 🚀</button>
+
+            <!-- Szállítási adatok űrlap -->
+            <div class="checkout-section">
+                <h3>🚚 Szállítási adatok</h3>
+                
+                <label style="font-size:12px; color:var(--text-secondary);">Teljes név:*</label>
+                <input type="text" id="fullname" placeholder="Gipsz Jakab" required>
+                
+                <label style="font-size:12px; color:var(--text-secondary);">Irányítószám:*</label>
+                <input type="text" id="zipcode" placeholder="1051" required>
+                
+                <label style="font-size:12px; color:var(--text-secondary);">Város:*</label>
+                <input type="text" id="city" placeholder="Budapest" required>
+                
+                <label style="font-size:12px; color:var(--text-secondary);">Utca, házszám:*</label>
+                <input type="text" id="address" placeholder="Fő utca 12. 2. emelet 4." required>
+                
+                <label style="font-size:12px; color:var(--text-secondary);">Telefonszám:*</label>
+                <input type="tel" id="phone" placeholder="+36301234567" required>
+                
+                <label style="font-size:12px; color:var(--text-secondary);">Email cím:*</label>
+                <input type="email" id="email" placeholder="pelda@email.hu" required>
+                
+                <label style="font-size:12px; color:var(--text-secondary);">Egyéb megjegyzés:</label>
+                <textarea id="note" placeholder="Pl. csengőre ez van kiírva..."></textarea>
+            </div>
+
+            <button class="btn" style="background:#28a745; margin-top:15px;" onclick="checkout()">Rendelés Véglegesítése 🚀</button>
             <button class="btn" style="background:#333; margin-top:10px;" onclick="toggleCart()">Bezárás</button>
         </div>
     </div>
@@ -390,16 +428,44 @@
                 alert('A kosarad üres!');
                 return;
             }
-            let text = "Új rendelés a PrimeDrop Shopból:\n\n";
+
+            const name = document.getElementById('fullname').value.trim();
+            const zip = document.getElementById('zipcode').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const note = document.getElementById('note').value.trim() || "Nincs";
+
+            if(!name || !zip || !city || !address || !phone || !email) {
+                alert('Kérjük, töltsd ki az összes kötelező (*) szállítási adatot!');
+                return;
+            }
+
             let total = 0;
+            let cartText = "";
             cart.forEach(i => {
-                text += `- ${i.name}\n  Szín: ${i.color} | Méret: ${i.size}\n  Ár: ${i.price} Ft\n\n`;
+                cartText += `- ${i.name} (${i.color} | Méret: ${i.size}) - ${i.price} Ft\n`;
                 total += i.price;
             });
-            text += `Összesen: ${total} Ft`;
-            tg.sendData(text);
+
+            // Adatcsomag összekészítése a botnak
+            const orderPayload = {
+                cart: cartText,
+                totalPrice: total,
+                shipping: {
+                    name: name,
+                    zip: zip,
+                    city: city,
+                    address: address,
+                    phone: phone,
+                    email: email,
+                    note: note
+                }
+            };
+
+            tg.sendData(JSON.stringify(orderPayload));
         }
     </script>
 </body>
-    </html>
-                    
+</html>
