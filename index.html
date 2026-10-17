@@ -7,12 +7,13 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         :root {
-            --bg-color: #0b0b0b;
-            --card-bg: #161616;
-            --accent-color: #f59e0b;
-            --text-color: #ffffff;
-            --text-secondary: #a1a1aa;
-            --border-color: #27272a;
+            --bg-color: #121214;
+            --card-bg: #1a1a1e;
+            --accent-color: #3b82f6;
+            --accent-hover: #2563eb;
+            --text-color: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --border-color: #2e2e36;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -20,9 +21,9 @@
             color: var(--text-color);
             margin: 0;
             padding: 16px;
-            padding-bottom: 80px;
+            padding-bottom: 90px;
         }
-        h1, h2, h3 { margin: 0 0 10px 0; }
+        h1, h2, h3 { margin: 0 0 8px 0; }
         .header {
             display: flex;
             justify-content: space-between;
@@ -35,13 +36,16 @@
             font-size: 20px;
             font-weight: 800;
             letter-spacing: 1px;
+            color: var(--text-color);
+        }
+        .logo span {
             color: var(--accent-color);
         }
         .cart-btn {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             color: var(--text-color);
-            padding: 8px 12px;
+            padding: 8px 14px;
             border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
@@ -55,48 +59,61 @@
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            overflow: hidden;
-            padding: 12px;
-        }
-        .product-img {
-            width: 100%;
-            height: 180px;
-            background: #222;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 600;
+            padding: 16px;
         }
         .product-title {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 700;
-            margin-top: 10px;
+            margin-bottom: 4px;
         }
         .product-price {
             color: var(--accent-color);
             font-weight: 800;
             font-size: 18px;
-            margin: 6px 0;
+            margin-bottom: 12px;
+        }
+        .options-group {
+            margin-bottom: 10px;
+        }
+        .options-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            display: block;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        select {
+            width: 100%;
+            background: #111113;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            margin-bottom: 8px;
         }
         .btn {
             background: var(--accent-color);
-            color: #000;
+            color: #fff;
             border: none;
             width: 100%;
             padding: 12px;
             border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 8px;
+            margin-top: 6px;
+            transition: background 0.2s;
+        }
+        .btn:active {
+            background: var(--accent-hover);
         }
         .cart-modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0,0,0,0.8);
             z-index: 100;
             padding: 20px;
             box-sizing: border-box;
@@ -114,31 +131,193 @@
         .cart-item {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin-bottom: 10px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px;
+            font-size: 14px;
+        }
+        .remove-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="logo">PRIMEDROP ⚡</div>
+        <div class="logo">PRIME<span>DROP</span></div>
         <button class="cart-btn" onclick="toggleCart()">🛒 Kosár (<span id="cart-count">0</span>)</button>
     </div>
 
     <div class="products-grid">
+        
+        <!-- 1. Mellény -->
         <div class="product-card">
-            <div class="product-img">Nike Dunk Low 'Panda'</div>
-            <div class="product-title">Nike Dunk Low 'Panda'</div>
-            <div class="product-price">49 990 Ft</div>
-            <button class="btn" onclick="addToCart('Nike Dunk Low Panda', 49990)">Kosárba ⚡</button>
+            <div class="product-title">Polo Ralph Lauren Mellény</div>
+            <div class="product-price">26 800 Ft</div>
+            <div class="options-group">
+                <span class="options-label">Szín:</span>
+                <select id="color-1">
+                    <option value="Fekete">Fekete</option>
+                    <option value="Olajzöld">Olajzöld</option>
+                    <option value="Fehér">Fehér</option>
+                    <option value="Sötétkék">Sötétkék</option>
+                </select>
+                <span class="options-label">Méret:</span>
+                <select id="size-1">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                </select>
+            </div>
+            <button class="btn" onclick="addToCart('Polo Ralph Lauren Mellény', 26800, 'color-1', 'size-1')">Kosárba 🛒</button>
         </div>
+
+        <!-- 2. Két részes szett -->
         <div class="product-card">
-            <div class="product-img">Trapstar Puffer Jacket</div>
-            <div class="product-title">Trapstar Irongate Puffer</div>
-            <div class="product-price">89 990 Ft</div>
-            <button class="btn" onclick="addToCart('Trapstar Irongate Puffer', 89990)">Kosárba ⚡</button>
+            <div class="product-title">Polo Ralph Lauren 2 részes szett</div>
+            <div class="product-price">14 990 Ft</div>
+            <div class="options-group">
+                <span class="options-label">Színkombináció:</span>
+                <select id="color-2">
+                    <option value="Fehér póló + Fehér nadrág">Fehér póló + Fehér nadrág</option>
+                    <option value="Fekete póló + Fekete nadrág">Fekete póló + Fekete nadrág</option>
+                    <option value="Sötétkék póló + Fekete nadrág">Sötétkék póló + Fekete nadrág</option>
+                    <option value="Szürke póló + Szürke nadrág">Szürke póló + Szürke nadrág</option>
+                    <option value="Fehér póló + Fekete nadrág">Fehér póló + Fekete nadrág</option>
+                    <option value="Fehér póló + Szürke nadrág">Fehér póló + Szürke nadrág</option>
+                    <option value="Sötétkék póló + Szürke nadrág">Sötétkék póló + Szürke nadrág</option>
+                    <option value="Fekete póló + Fehér nadrág">Fekete póló + Fehér nadrág</option>
+                    <option value="Fekete póló + Szürke nadrág">Fekete póló + Szürke nadrág</option>
+                    <option value="Szürke póló + Fehér nadrág">Szürke póló + Fehér nadrág</option>
+                    <option value="Szürke póló + Fekete nadrág">Szürke póló + Fekete nadrág</option>
+                </select>
+                <span class="options-label">Méret:</span>
+                <select id="size-2">
+                    <option value="130cm (125-130cm)">130cm (125-130cm)</option>
+                    <option value="140cm (130-140cm)">140cm (130-140cm)</option>
+                    <option value="150cm (140-150cm)">150cm (140-150cm)</option>
+                    <option value="160cm (150-160cm)">160cm (150-160cm)</option>
+                    <option value="Felnőtt S / Nadrág 170">Felnőtt S / Nadrág 170</option>
+                </select>
+            </div>
+            <button class="btn" onclick="addToCart('Polo Ralph Lauren 2 részes szett', 14990, 'color-2', 'size-2')">Kosárba 🛒</button>
         </div>
+
+        <!-- 3. Zokni szett -->
+        <div class="product-card">
+            <div class="product-title">Polo Ralph Lauren Zokni Szett (5 pár)</div>
+            <div class="product-price">6 000 Ft / doboz</div>
+            <div class="options-group">
+                <span class="options-label">Színkombináció:</span>
+                <select id="color-3">
+                    <option value="Vegyes (színes doboz)">Vegyes (színes doboz)</option>
+                    <option value="Fekete (5 pár)">Fekete (5 pár)</option>
+                    <option value="Fehér (5 pár)">Fehér (5 pár)</option>
+                    <option value="Szürke (5 pár)">Szürke (5 pár)</option>
+                </select>
+                <span class="options-label">Méret:</span>
+                <select id="size-3" disabled>
+                    <option value="Egy méret">Egy méret (One size)</option>
+                </select>
+            </div>
+            <button class="btn" onclick="addToCart('Polo Ralph Lauren Zokni Szett (5 pár)', 6000, 'color-3', 'size-3')">Kosárba 🛒</button>
+        </div>
+
+        <!-- 4. Kötött pulóver -->
+        <div class="product-card">
+            <div class="product-title">Polo Ralph Lauren Kötött Pulóver</div>
+            <div class="product-price">18 900 Ft</div>
+            <div class="options-group">
+                <span class="options-label">Szín:</span>
+                <select id="color-4">
+                    <option value="Fekete">Fekete</option>
+                    <option value="Fehér">Fehér</option>
+                    <option value="Sötétkék">Sötétkék</option>
+                    <option value="Szürke">Szürke</option>
+                </select>
+                <span class="options-label">Méret:</span>
+                <select id="size-4">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+            </div>
+            <button class="btn" onclick="addToCart('Polo Ralph Lauren Kötött Pulóver', 18900, 'color-4', 'size-4')">Kosárba 🛒</button>
+        </div>
+
+        <!-- 5. Cipzáros pulóver -->
+        <div class="product-card">
+            <div class="product-title">Polo Ralph Lauren Cipzáros Pulóver</div>
+            <div class="product-price">18 900 Ft</div>
+            <div class="options-group">
+                <span class="options-label">Szín:</span>
+                <select id="color-5">
+                    <option value="Fekete">Fekete</option>
+                    <option value="Szürke">Szürke</option>
+                    <option value="Sötétkék">Sötétkék</option>
+                </select>
+                <span class="options-label">Méret:</span>
+                <select id="size-5">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+            </div>
+            <button class="btn" onclick="addToCart('Polo Ralph Lauren Cipzáros Pulóver', 18900, 'color-5', 'size-5')">Kosárba 🛒</button>
+        </div>
+
+        <!-- 6. Baseball sapka -->
+        <div class="product-card">
+            <div class="product-title">Polo Ralph Lauren Baseball Sapka</div>
+            <div class="product-price">5 900 Ft</div>
+            <div class="options-group">
+                <span class="options-label">Szín:</span>
+                <select id="color-6">
+                    <option value="Bézs">Bézs</option>
+                    <option value="Fekete">Fekete</option>
+                    <option value="Fehér">Fehér</option>
+                </select>
+                <span class="options-label">Méret:</span>
+                <select id="size-6" disabled>
+                    <option value="Egy méret">Egy méret (One size)</option>
+                </select>
+            </div>
+            <button class="btn" onclick="addToCart('Polo Ralph Lauren Baseball Sapka', 5900, 'color-6', 'size-6')">Kosárba 🛒</button>
+        </div>
+
+        <!-- 7. Téli kabát -->
+        <div class="product-card">
+            <div class="product-title">Polo Ralph Lauren Téli Kabát</div>
+            <div class="product-price">35 900 Ft</div>
+            <div class="options-group">
+                <span class="options-label">Szín:</span>
+                <select id="color-7">
+                    <option value="Fekete (piros logó)">Fekete (piros logó)</option>
+                    <option value="Fehér (piros logó)">Fehér (piros logó)</option>
+                    <option value="Kék (piros logó)">Kék (piros logó)</option>
+                </select>
+                <span class="options-label">Méret:</span>
+                <select id="size-7">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                </select>
+            </div>
+            <button class="btn" onclick="addToCart('Polo Ralph Lauren Téli Kabát', 35900, 'color-7', 'size-7')">Kosárba 🛒</button>
+        </div>
+
     </div>
 
     <div id="cartModal" class="cart-modal">
@@ -147,7 +326,7 @@
             <div id="cart-items"></div>
             <h3>Összesen: <span id="cart-total">0</span> Ft</h3>
             <button class="btn" onclick="checkout()">Rendelés leadása 🚀</button>
-            <button class="btn" style="background:#333; color:#fff; margin-top:10px;" onclick="toggleCart()">Bezárás</button>
+            <button class="btn" style="background:#333; margin-top:10px;" onclick="toggleCart()">Bezárás</button>
         </div>
     </div>
 
@@ -156,11 +335,14 @@
         const tg = window.Telegram.WebApp;
         tg.expand();
 
-        function addToCart(name, price) {
-            cart.push({name, price});
+        function addToCart(name, price, colorId, sizeId) {
+            const color = document.getElementById(colorId).value;
+            const size = document.getElementById(sizeId).value;
+            
+            cart.push({name, price, color, size});
             document.getElementById('cart-count').innerText = cart.length;
             tg.HapticFeedback.impactOccurred('medium');
-            alert(name + ' hozzáadva a kosárhoz!');
+            alert(name + ' (' + color + ', ' + size + ') hozzáadva a kosárhoz!');
         }
 
         function toggleCart() {
@@ -177,11 +359,30 @@
             const container = document.getElementById('cart-items');
             container.innerHTML = '';
             let total = 0;
-            cart.forEach((item) => {
+            
+            if(cart.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-secondary);">A kosár üres.</p>';
+            }
+
+            cart.forEach((item, index) => {
                 total += item.price;
-                container.innerHTML += `<div class="cart-item"><span>${item.name}</span><span>${item.price} Ft</span></div>`;
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <span style="font-size:12px; color:var(--text-secondary);">${item.color} | Méret: ${item.size}</span><br>
+                            <span style="color:var(--accent-color); font-weight:700;">${item.price} Ft</span>
+                        </div>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">Törlés</button>
+                    </div>`;
             });
             document.getElementById('cart-total').innerText = total;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            document.getElementById('cart-count').innerText = cart.length;
+            renderCart();
         }
 
         function checkout() {
@@ -189,10 +390,16 @@
                 alert('A kosarad üres!');
                 return;
             }
-            let text = "Új rendelés a Mini Appból:\n";
-            cart.forEach(i => text += `- ${i.name} (${i.price} Ft)\n`);
+            let text = "Új rendelés a PrimeDrop Shopból:\n\n";
+            let total = 0;
+            cart.forEach(i => {
+                text += `- ${i.name}\n  Szín: ${i.color} | Méret: ${i.size}\n  Ár: ${i.price} Ft\n\n`;
+                total += i.price;
+            });
+            text += `Összesen: ${total} Ft`;
             tg.sendData(text);
         }
     </script>
 </body>
-</html>
+    </html>
+                    
