@@ -7,464 +7,462 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         :root {
-            --bg-color: #121214;
-            --card-bg: #1a1a1e;
-            --accent-color: #3b82f6;
-            --accent-hover: #2563eb;
-            --text-color: #f3f4f6;
-            --text-secondary: #9ca3af;
-            --border-color: #2e2e36;
+            --bg-color: #0f1115;
+            --card-bg: #1a1d24;
+            --accent-color: #2563eb;
+            --accent-hover: #1d4ed8;
+            --text-main: #ffffff;
+            --text-sub: #9ca3af;
+            --border-color: #2e3440;
+            --success-color: #10b981;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-main);
             margin: 0;
-            padding: 16px;
+            padding: 15px;
+            box-sizing: border-box;
             padding-bottom: 90px;
         }
-        h1, h2, h3 { margin: 0 0 8px 0; }
+
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 12px;
+            margin-bottom: 5px;
         }
-        .logo {
-            font-size: 20px;
+
+        .brand-logo {
+            font-size: 24px;
             font-weight: 800;
             letter-spacing: 1px;
-            color: var(--text-color);
         }
-        .logo span {
+
+        .brand-logo span {
             color: var(--accent-color);
         }
-        .cart-btn {
-            background: var(--card-bg);
+
+        .motto {
+            font-size: 13px;
+            color: var(--text-sub);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .info-btn {
+            background-color: #262a36;
+            color: var(--text-main);
             border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 8px 14px;
+            padding: 8px 12px;
             border-radius: 8px;
-            font-weight: 600;
             cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
-        .products-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
+
         .product-card {
-            background: var(--card-bg);
+            background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 16px;
+            padding: 15px;
+            margin-bottom: 15px;
         }
+
         .product-title {
-            font-size: 17px;
-            font-weight: 700;
-            margin-bottom: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 5px 0;
         }
+
         .product-price {
-            color: var(--accent-color);
-            font-weight: 800;
-            font-size: 18px;
+            font-size: 15px;
+            color: #60a5fa;
+            font-weight: 700;
             margin-bottom: 12px;
         }
-        .options-group {
+
+        .option-group {
             margin-bottom: 10px;
         }
-        .options-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
+
+        .option-group label {
             display: block;
-            font-weight: 600;
+            font-size: 11px;
+            color: var(--text-sub);
+            margin-bottom: 4px;
             text-transform: uppercase;
         }
-        select, input, textarea {
+
+        select {
             width: 100%;
-            background: #111113;
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
             padding: 10px;
+            background-color: #12141a;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
             border-radius: 8px;
             font-size: 14px;
             outline: none;
-            margin-bottom: 8px;
-            box-sizing: border-box;
         }
-        select:focus, input:focus, textarea:focus {
-            border-color: var(--accent-color);
-        }
-        .btn {
-            background: var(--accent-color);
-            color: #fff;
-            border: none;
+
+        .add-btn {
             width: 100%;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
             padding: 12px;
             border-radius: 8px;
-            font-weight: 700;
+            font-weight: 600;
             cursor: pointer;
-            margin-top: 6px;
-            transition: background 0.2s;
+            margin-top: 10px;
         }
-        .btn:active {
-            background: var(--accent-hover);
-        }
-        .cart-modal {
-            display: none;
+
+        /* Kosár sáv alul */
+        .cart-bar {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 100;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .cart-content {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 20px;
-            max-width: 500px;
-            margin: 20px auto;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        .cart-item {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-            font-size: 14px;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
         }
-        .remove-btn {
-            background: #ef4444;
+
+        .checkout-btn {
+            background-color: var(--accent-color);
             color: white;
             border: none;
-            padding: 4px 8px;
-            border-radius: 4px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
             cursor: pointer;
-            font-size: 12px;
         }
-        .checkout-section {
-            margin-top: 20px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
-            text-align: left;
+
+        /* Modal ablakok */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            width: 85%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .faq-a {
+            font-size: 13px;
+            color: var(--text-sub);
+            line-height: 1.4;
+        }
+
+        .close-btn {
+            width: 100%;
+            background-color: #374151;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            color: var(--text-sub);
+            margin-bottom: 4px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: #12141a;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        /* Sikeres rendelés felugró */
+        .success-box {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .success-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: var(--success-color);
         }
     </style>
 </head>
 <body>
+
     <div class="header">
-        <div class="logo">PRIME<span>DROP</span></div>
-        <button class="cart-btn" onclick="toggleCart()">🛒 Kosár (<span id="cart-count">0</span>)</button>
+        <div class="brand-logo">PRIME<span>DROP</span></div>
+        <button class="info-btn" onclick="openModal('faqModal')">ℹ️ GYIK & Infó</button>
     </div>
+    <div class="motto">"A te stílusod, a mi küldetésünk. – PrimeDrop"</div>
 
-    <div class="products-grid">
+    <!-- TERMÉK 1 -->
+    <div class="product-card">
+        <div class="product-title">Polo Ralph Lauren Mellény</div>
+        <div class="product-price">26 800 Ft</div>
         
-        <!-- 1. Mellény -->
-        <div class="product-card">
-            <div class="product-title">Polo Ralph Lauren Mellény</div>
-            <div class="product-price">26 800 Ft</div>
-            <div class="options-group">
-                <span class="options-label">Szín:</span>
-                <select id="color-1">
-                    <option value="Fekete">Fekete</option>
-                    <option value="Olajzöld">Olajzöld</option>
-                    <option value="Fehér">Fehér</option>
-                    <option value="Sötétkék">Sötétkék</option>
-                </select>
-                <span class="options-label">Méret:</span>
-                <select id="size-1">
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
-                </select>
-            </div>
-            <button class="btn" onclick="addToCart('Polo Ralph Lauren Mellény', 26800, 'color-1', 'size-1')">Kosárba 🛒</button>
+        <div class="option-group">
+            <label>Szín</label>
+            <select id="color-1">
+                <option value="Fekete">Fekete</option>
+            </select>
         </div>
 
-        <!-- 2. Két részes szett -->
-        <div class="product-card">
-            <div class="product-title">Polo Ralph Lauren 2 részes szett</div>
-            <div class="product-price">14 990 Ft</div>
-            <div class="options-group">
-                <span class="options-label">Színkombináció:</span>
-                <select id="color-2">
-                    <option value="Fehér póló + Fehér nadrág">Fehér póló + Fehér nadrág</option>
-                    <option value="Fekete póló + Fekete nadrág">Fekete póló + Fekete nadrág</option>
-                    <option value="Sötétkék póló + Fekete nadrág">Sötétkék póló + Fekete nadrág</option>
-                    <option value="Szürke póló + Szürke nadrág">Szürke póló + Szürke nadrág</option>
-                    <option value="Fehér póló + Fekete nadrág">Fehér póló + Fekete nadrág</option>
-                    <option value="Fehér póló + Szürke nadrág">Fehér póló + Szürke nadrág</option>
-                    <option value="Sötétkék póló + Szürke nadrág">Sötétkék póló + Szürke nadrág</option>
-                    <option value="Fekete póló + Fehér nadrág">Fekete póló + Fehér nadrág</option>
-                    <option value="Fekete póló + Szürke nadrág">Fekete póló + Szürke nadrág</option>
-                    <option value="Szürke póló + Fehér nadrág">Szürke póló + Fehér nadrág</option>
-                    <option value="Szürke póló + Fekete nadrág">Szürke póló + Fekete nadrág</option>
-                </select>
-                <span class="options-label">Méret:</span>
-                <select id="size-2">
-                    <option value="130cm (125-130cm)">130cm (125-130cm)</option>
-                    <option value="140cm (130-140cm)">140cm (130-140cm)</option>
-                    <option value="150cm (140-150cm)">150cm (140-150cm)</option>
-                    <option value="160cm (150-160cm)">160cm (150-160cm)</option>
-                    <option value="Felnőtt S / Nadrág 170">Felnőtt S / Nadrág 170</option>
-                </select>
-            </div>
-            <button class="btn" onclick="addToCart('Polo Ralph Lauren 2 részes szett', 14990, 'color-2', 'size-2')">Kosárba 🛒</button>
+        <div class="option-group">
+            <label>Méret</label>
+            <select id="size-1">
+                <option value="S">S</option>
+            </select>
         </div>
 
-        <!-- 3. Zokni szett -->
-        <div class="product-card">
-            <div class="product-title">Polo Ralph Lauren Zokni Szett (5 pár)</div>
-            <div class="product-price">6 000 Ft / doboz</div>
-            <div class="options-group">
-                <span class="options-label">Színkombináció:</span>
-                <select id="color-3">
-                    <option value="Vegyes (színes doboz)">Vegyes (színes doboz)</option>
-                    <option value="Fekete (5 pár)">Fekete (5 pár)</option>
-                    <option value="Fehér (5 pár)">Fehér (5 pár)</option>
-                    <option value="Szürke (5 pár)">Szürke (5 pár)</option>
-                </select>
-                <span class="options-label">Méret:</span>
-                <select id="size-3" disabled>
-                    <option value="Egy méret">Egy méret (One size)</option>
-                </select>
-            </div>
-            <button class="btn" onclick="addToCart('Polo Ralph Lauren Zokni Szett (5 pár)', 6000, 'color-3', 'size-3')">Kosárba 🛒</button>
-        </div>
-
-        <!-- 4. Kötött pulóver -->
-        <div class="product-card">
-            <div class="product-title">Polo Ralph Lauren Kötött Pulóver</div>
-            <div class="product-price">18 900 Ft</div>
-            <div class="options-group">
-                <span class="options-label">Szín:</span>
-                <select id="color-4">
-                    <option value="Fekete">Fekete</option>
-                    <option value="Fehér">Fehér</option>
-                    <option value="Sötétkék">Sötétkék</option>
-                    <option value="Szürke">Szürke</option>
-                </select>
-                <span class="options-label">Méret:</span>
-                <select id="size-4">
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                </select>
-            </div>
-            <button class="btn" onclick="addToCart('Polo Ralph Lauren Kötött Pulóver', 18900, 'color-4', 'size-4')">Kosárba 🛒</button>
-        </div>
-
-        <!-- 5. Cipzáros pulóver -->
-        <div class="product-card">
-            <div class="product-title">Polo Ralph Lauren Cipzáros Pulóver</div>
-            <div class="product-price">18 900 Ft</div>
-            <div class="options-group">
-                <span class="options-label">Szín:</span>
-                <select id="color-5">
-                    <option value="Fekete">Fekete</option>
-                    <option value="Szürke">Szürke</option>
-                    <option value="Sötétkék">Sötétkék</option>
-                </select>
-                <span class="options-label">Méret:</span>
-                <select id="size-5">
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                </select>
-            </div>
-            <button class="btn" onclick="addToCart('Polo Ralph Lauren Cipzáros Pulóver', 18900, 'color-5', 'size-5')">Kosárba 🛒</button>
-        </div>
-
-        <!-- 6. Baseball sapka -->
-        <div class="product-card">
-            <div class="product-title">Polo Ralph Lauren Baseball Sapka</div>
-            <div class="product-price">5 900 Ft</div>
-            <div class="options-group">
-                <span class="options-label">Szín:</span>
-                <select id="color-6">
-                    <option value="Bézs">Bézs</option>
-                    <option value="Fekete">Fekete</option>
-                    <option value="Fehér">Fehér</option>
-                </select>
-                <span class="options-label">Méret:</span>
-                <select id="size-6" disabled>
-                    <option value="Egy méret">Egy méret (One size)</option>
-                </select>
-            </div>
-            <button class="btn" onclick="addToCart('Polo Ralph Lauren Baseball Sapka', 5900, 'color-6', 'size-6')">Kosárba 🛒</button>
-        </div>
-
-        <!-- 7. Téli kabát -->
-        <div class="product-card">
-            <div class="product-title">Polo Ralph Lauren Téli Kabát</div>
-            <div class="product-price">35 900 Ft</div>
-            <div class="options-group">
-                <span class="options-label">Szín:</span>
-                <select id="color-7">
-                    <option value="Fekete (piros logó)">Fekete (piros logó)</option>
-                    <option value="Fehér (piros logó)">Fehér (piros logó)</option>
-                    <option value="Kék (piros logó)">Kék (piros logó)</option>
-                </select>
-                <span class="options-label">Méret:</span>
-                <select id="size-7">
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
-                </select>
-            </div>
-            <button class="btn" onclick="addToCart('Polo Ralph Lauren Téli Kabát', 35900, 'color-7', 'size-7')">Kosárba 🛒</button>
-        </div>
-
+        <button class="add-btn" onclick="addToCart('Polo Ralph Lauren Mellény', 26800, 'color-1', 'size-1')">Kosárba 🛒</button>
     </div>
 
-    <!-- Kosár Modál -->
-    <div id="cartModal" class="cart-modal">
-        <div class="cart-content">
-            <h2>Kosár tartalma</h2>
-            <div id="cart-items"></div>
-            <h3>Összesen: <span id="cart-total">0</span> Ft</h3>
+    <!-- TERMÉK 2 -->
+    <div class="product-card">
+        <div class="product-title">Polo Ralph Lauren 2 részes szett</div>
+        <div class="product-price">14 990 Ft</div>
+        
+        <div class="option-group">
+            <label>Színkombináció</label>
+            <select id="color-2">
+                <option value="Fehér póló + Fehér nadrág">Fehér póló + Fehér nadrág</option>
+            </select>
+        </div>
 
-            <!-- Szállítási adatok űrlap -->
-            <div class="checkout-section">
-                <h3>🚚 Szállítási adatok</h3>
-                
-                <label style="font-size:12px; color:var(--text-secondary);">Teljes név:*</label>
-                <input type="text" id="fullname" placeholder="Gipsz Jakab" required>
-                
-                <label style="font-size:12px; color:var(--text-secondary);">Irányítószám:*</label>
-                <input type="text" id="zipcode" placeholder="1051" required>
-                
-                <label style="font-size:12px; color:var(--text-secondary);">Város:*</label>
-                <input type="text" id="city" placeholder="Budapest" required>
-                
-                <label style="font-size:12px; color:var(--text-secondary);">Utca, házszám:*</label>
-                <input type="text" id="address" placeholder="Fő utca 12. 2. emelet 4." required>
-                
-                <label style="font-size:12px; color:var(--text-secondary);">Telefonszám:*</label>
-                <input type="tel" id="phone" placeholder="+36301234567" required>
-                
-                <label style="font-size:12px; color:var(--text-secondary);">Email cím:*</label>
-                <input type="email" id="email" placeholder="pelda@email.hu" required>
-                
-                <label style="font-size:12px; color:var(--text-secondary);">Egyéb megjegyzés:</label>
-                <textarea id="note" placeholder="Pl. csengőre ez van kiírva..."></textarea>
+        <div class="option-group">
+            <label>Méret</label>
+            <select id="size-2">
+                <option value="130cm (125-130cm)">130cm (125-130cm)</option>
+            </select>
+        </div>
+
+        <button class="add-btn" onclick="addToCart('Polo Ralph Lauren 2 részes szett', 14990, 'color-2', 'size-2')">Kosárba 🛒</button>
+    </div>
+
+    <!-- TERMÉK 3 -->
+    <div class="product-card">
+        <div class="product-title">Polo Ralph Lauren Zokni Szett (5 pár)</div>
+        <div class="product-price">6 000 Ft / doboz</div>
+        
+        <div class="option-group">
+            <label>Színkombináció</label>
+            <select id="color-3">
+                <option value="Vegyes (színes doboz)">Vegyes (színes doboz)</option>
+            </select>
+        </div>
+
+        <button class="add-btn" onclick="addToCart('Polo Ralph Lauren Zokni Szett (5 pár)', 6000, 'color-3', null)">Kosárba 🛒</button>
+    </div>
+
+    <!-- KOSÁR SÁV -->
+    <div class="cart-bar">
+        <div>
+            <div style="font-size: 12px; color: var(--text-sub);">Összesen:</div>
+            <div id="cart-total" style="font-size: 18px; font-weight: 700;">0 Ft</div>
+        </div>
+        <button class="checkout-btn" onclick="openCheckout()">Rendelés leadása</button>
+    </div>
+
+    <!-- GYIK MODAL -->
+    <div id="faqModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">ℹ️ GYIK & Szállítási Infók</div>
+            
+            <div class="faq-item">
+                <div class="faq-q">🚚 Mennyi a szállítási költség?</div>
+                <div class="faq-a">A szállítás nálunk **INGYENES** minden rendelésre!</div>
             </div>
 
-            <button class="btn" style="background:#28a745; margin-top:15px;" onclick="checkout()">Rendelés Véglegesítése 🚀</button>
-            <button class="btn" style="background:#333; margin-top:10px;" onclick="toggleCart()">Bezárás</button>
+            <div class="faq-item">
+                <div class="faq-q">⏱️ Mennyi idő alatt érkezik meg a csomag?</div>
+                <div class="faq-a">A szállítási idő átlagosan 14 nap, legrosszabb esetben 18-19 napot vesz igénybe.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">📦 Hogyan tudom nyomon követni a csomagomat?</div>
+                <div class="faq-a">A csomagod nyomonkövetésével kapcsolatban bármikor írhatsz az adminnak Telegramon: **@BSleziB**.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">📏 Mi a teendő, ha rossz méretet választottam?</div>
+                <div class="faq-a">Ha nem lett jó a méret, 90%-os pénzvisszafizetést biztosítunk a hatékonyság és megbízhatóság érdekében.</div>
+            </div>
+
+            <button class="close-btn" onclick="closeModal('faqModal')">Bezárás</button>
+        </div>
+    </div>
+
+    <!-- SZÁLLÍTÁSI ADATOK MODAL -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">📦 Szállítási Adatok</div>
+            
+            <div class="form-group">
+                <label>Teljes Név *</label>
+                <input type="text" id="cust-name" placeholder="Pl.: Kovács János">
+            </div>
+
+            <div class="form-group">
+                <label>Irányítószám *</label>
+                <input type="text" id="cust-zip" placeholder="Pl.: 1051">
+            </div>
+
+            <div class="form-group">
+                <label>Város *</label>
+                <input type="text" id="cust-city" placeholder="Pl.: Budapest">
+            </div>
+
+            <div class="form-group">
+                <label>Utca, házszám, emelet / ajtó *</label>
+                <input type="text" id="cust-address" placeholder="Pl.: Fő utca 12. 2/4">
+            </div>
+
+            <div class="form-group">
+                <label>Telefonszám *</label>
+                <input type="tel" id="cust-phone" placeholder="Pl.: +36301234567">
+            </div>
+
+            <div class="form-group">
+                <label>Email cím *</label>
+                <input type="email" id="cust-email" placeholder="Pl.: janos@gmail.com">
+            </div>
+
+            <div class="form-group">
+                <label>Megjegyzés / Automata név (Opcionális)</label>
+                <textarea id="cust-note" rows="2" placeholder="Csomagautomatához név/cím vagy egyéb megjegyzés"></textarea>
+            </div>
+
+            <button class="checkout-btn" style="width: 100%; margin-top: 10px;" onclick="submitOrder()">Rendelés Véglegesítése 🚀</button>
+            <button class="close-btn" onclick="closeModal('checkoutModal')">Mégse</button>
+        </div>
+    </div>
+
+    <!-- SIKERES RENDELÉS MODAL -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-box">
+            <div class="success-icon">✅</div>
+            <div class="modal-title" style="color: var(--success-color);">Rendelés Sikeres!</div>
+            <p style="font-size: 14px; color: var(--text-sub);">Rendelésedet rögzítettük. Most átirányítunk a bothoz a fizetési adatokért...</p>
         </div>
     </div>
 
     <script>
-        let cart = [];
         const tg = window.Telegram.WebApp;
         tg.expand();
 
-        function addToCart(name, price, colorId, sizeId) {
-            const color = document.getElementById(colorId).value;
-            const size = document.getElementById(sizeId).value;
-            
-            cart.push({name, price, color, size});
-            document.getElementById('cart-count').innerText = cart.length;
-            tg.HapticFeedback.impactOccurred('medium');
-            alert(name + ' (' + color + ', ' + size + ') hozzáadva a kosárhoz!');
-        }
+        let cart = [];
+        let totalPrice = 0;
 
-        function toggleCart() {
-            const modal = document.getElementById('cartModal');
-            if (modal.style.display === 'block') {
-                modal.style.display = 'none';
-            } else {
-                modal.style.display = 'block';
-                renderCart();
+        function addToCart(title, price, colorId, sizeId) {
+            const color = colorId ? document.getElementById(colorId).value : null;
+            const size = sizeId ? document.getElementById(sizeId).value : null;
+
+            let itemText = `- ${title}`;
+            if (color || size) {
+                itemText += ` (${color ? 'Szín: ' + color : ''}${color && size ? ' | ' : ''}${size ? 'Méret: ' + size : ''})`;
             }
+            itemText += ` - ${price} Ft`;
+
+            cart.push({ title, price, details: itemText });
+            totalPrice += price;
+
+            document.getElementById('cart-total').innerText = totalPrice.toLocaleString('hu-HU') + ' Ft';
+            tg.HapticFeedback.notificationOccurred('success');
         }
 
-        function renderCart() {
-            const container = document.getElementById('cart-items');
-            container.innerHTML = '';
-            let total = 0;
-            
-            if(cart.length === 0) {
-                container.innerHTML = '<p style="color:var(--text-secondary);">A kosár üres.</p>';
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function openCheckout() {
+            if (cart.length === 0) {
+                tg.showAlert("A kosarad még üres!");
+                return;
             }
-
-            cart.forEach((item, index) => {
-                total += item.price;
-                container.innerHTML += `
-                    <div class="cart-item">
-                        <div>
-                            <strong>${item.name}</strong><br>
-                            <span style="font-size:12px; color:var(--text-secondary);">${item.color} | Méret: ${item.size}</span><br>
-                            <span style="color:var(--accent-color); font-weight:700;">${item.price} Ft</span>
-                        </div>
-                        <button class="remove-btn" onclick="removeFromCart(${index})">Törlés</button>
-                    </div>`;
-            });
-            document.getElementById('cart-total').innerText = total;
+            openModal('checkoutModal');
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            document.getElementById('cart-count').innerText = cart.length;
-            renderCart();
-        }
+        function submitOrder() {
+            const name = document.getElementById('cust-name').value.trim();
+            const zip = document.getElementById('cust-zip').value.trim();
+            const city = document.getElementById('cust-city').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const email = document.getElementById('cust-email').value.trim();
+            const note = document.getElementById('cust-note').value.trim();
 
-        function checkout() {
-            if(cart.length === 0) {
-                alert('A kosarad üres!');
+            if (!name || !zip || !city || !address || !phone || !email) {
+                tg.showAlert("Kérjük, tölts ki minden kötelező (*) mezőt!");
                 return;
             }
 
-            const name = document.getElementById('fullname').value.trim();
-            const zip = document.getElementById('zipcode').value.trim();
-            const city = document.getElementById('city').value.trim();
-            const address = document.getElementById('address').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const note = document.getElementById('note').value.trim() || "Nincs";
+            closeModal('checkoutModal');
+            openModal('successModal');
 
-            if(!name || !zip || !city || !address || !phone || !email) {
-                alert('Kérjük, töltsd ki az összes kötelező (*) szállítási adatot!');
-                return;
-            }
-
-            let total = 0;
-            let cartText = "";
-            cart.forEach(i => {
-                cartText += `- ${i.name} (${i.color} | Méret: ${i.size}) - ${i.price} Ft\n`;
-                total += i.price;
-            });
-
-            // Adatcsomag összekészítése a botnak
             const orderPayload = {
-                cart: cartText,
-                totalPrice: total,
-                shipping: {
-                    name: name,
-                    zip: zip,
-                    city: city,
-                    address: address,
-                    phone: phone,
-                    email: email,
-                    note: note
-                }
+                cart: cart.map(i => i.details).join('\n'),
+                totalPrice: totalPrice,
+                shipping: { name, zip, city, address, phone, email, note }
             };
 
-            tg.sendData(JSON.stringify(orderPayload));
+            setTimeout(() => {
+                tg.sendData(JSON.stringify(orderPayload));
+            }, 1500);
         }
     </script>
 </body>
