@@ -1,0 +1,9 @@
+{
+  "storeName": "PRIME DROP",
+  "currency": "HUF",
+  "products": [
+    {"id":"product_001","name":"Polo Ralph Lauren mellény","category":"Mellények","price":26800,"description":"Letisztult, prémium megjelenésű darab.","image":"","available":true,"sizes":["S"],"colors":["Fekete"]},
+    {"id":"product_002","name":"Polo Ralph Lauren 2 részes szett","category":"Szettek","price":14990,"description":"Fehér póló és fehér nadrág egy szettben.","image":"","available":true,"sizes":["130cm (125–130cm)"],"colors":["Fehér"]},
+    {"id":"product_003","name":"Polo Ralph Lauren zokni szett (5 pár)","category":"Kiegészítők","price":6000,"description":"Öt pár zokni egy dobozban.","image":"","available":true,"sizes":["Egy méret"],"colors":["Vegyes"]}
+  ]
+}
