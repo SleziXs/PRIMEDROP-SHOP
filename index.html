@@ -1,18 +1,413 @@
-<!doctype html><html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#090d18"><title>PRIME DROP | Streetwear Shop</title><script src="https://telegram.org/js/telegram-web-app.js"></script>
-<style>
-:root{--bg:#090d18;--panel:#111827;--blue:#3678ff;--cyan:#64c7ff;--text:#f5f8ff;--muted:#9aa9c1;--line:#25334a;--good:#37d69a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% -10%,#173d77 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}.wrap{max-width:760px;margin:auto;padding:18px 16px 105px}.top{display:flex;justify-content:space-between;align-items:center;padding:7px 0 18px}.brand{font-weight:1000;letter-spacing:2px;font-size:22px}.brand span{color:var(--cyan)}.pill{border:1px solid #31558d;color:#b9d7ff;background:#10213c;padding:7px 11px;border-radius:30px;font-size:11px;font-weight:800}.hero{position:relative;overflow:hidden;border:1px solid #28466f;border-radius:25px;padding:27px 23px;background:linear-gradient(125deg,#132b50,#101827 62%,#142c4b);box-shadow:0 18px 55px #0005}.hero:after{content:'PD';position:absolute;right:-5px;bottom:-42px;font-size:150px;font-weight:1000;color:#ffffff0a}.eyebrow{font-size:11px;color:#8ecbff;letter-spacing:2px;font-weight:900}.hero h1{font-size:clamp(32px,8vw,52px);line-height:.98;margin:13px 0 12px;letter-spacing:-2px;font-weight:1000}.hero h1 span{color:var(--cyan)}.hero p{color:#c0cee2;max-width:400px;line-height:1.5;font-size:14px;margin:0}.hero-foot{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}.tag{font-size:11px;border:1px solid #47628b;background:#ffffff0a;border-radius:20px;padding:7px 10px;color:#d6e8ff}.section-head{display:flex;justify-content:space-between;align-items:end;margin:28px 2px 14px}.section-head h2{font-size:20px;margin:0;font-weight:950}.section-head small{color:var(--muted)}.categories{display:flex;gap:8px;overflow:auto;padding:2px 0 13px}.cat{white-space:nowrap;border:1px solid var(--line);background:#101827;color:#b7c5d9;border-radius:30px;padding:9px 14px;font-size:12px;font-weight:800}.cat.active{background:var(--blue);border-color:var(--blue);color:white}.products{display:grid;gap:13px}.product{display:grid;grid-template-columns:118px 1fr;gap:14px;background:linear-gradient(145deg,#151f30,#101724);border:1px solid var(--line);border-radius:19px;padding:11px}.photo{height:137px;border-radius:13px;background:linear-gradient(145deg,#203b60,#101827);display:flex;align-items:center;justify-content:center;overflow:hidden;color:#82bfff;font-weight:1000;font-size:26px}.photo img{width:100%;height:100%;object-fit:cover}.details{min-width:0;display:flex;flex-direction:column}.category{font-size:10px;color:#7ebdff;font-weight:900;letter-spacing:1.2px;text-transform:uppercase}.details h3{font-size:15px;line-height:1.2;margin:6px 0}.desc{font-size:11px;color:var(--muted);line-height:1.4}.price{font-size:18px;font-weight:950;margin-top:auto;padding-top:9px}.price small{font-size:10px;color:var(--muted);font-weight:600}.options{display:flex;gap:7px;margin-top:8px}.options select{min-width:0;flex:1;background:#0c1422;color:#e9f2ff;border:1px solid #2b3e59;border-radius:9px;padding:8px;font-size:11px}.add,.submit{border:0;background:linear-gradient(110deg,#3478ff,#2354d5);color:white;border-radius:10px;padding:10px 12px;font-size:12px;font-weight:900}.empty{padding:25px;text-align:center;border:1px dashed var(--line);border-radius:15px;color:var(--muted);font-size:13px}.cartbar{position:fixed;bottom:0;left:0;right:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#080d18ed;backdrop-filter:blur(16px);border-top:1px solid #26364d;z-index:5}.cartbar button{max-width:728px;margin:auto;width:100%;display:flex;justify-content:space-between;border:0;border-radius:14px;background:linear-gradient(100deg,#3678ff,#2055cf);color:white;padding:15px 17px;font-weight:950}.modal{display:none;position:fixed;inset:0;z-index:10;background:#050912e8;backdrop-filter:blur(8px);overflow:auto;padding:18px 12px}.modal.show{display:block}.sheet{max-width:650px;margin:20px auto;background:#111a29;border:1px solid #2b3c55;border-radius:22px;padding:20px}.sheet-head{display:flex;justify-content:space-between;align-items:center}.sheet h2{margin:0;font-size:21px}.close{background:#26364d;border:0;color:white;border-radius:9px;padding:7px 11px}.cartline{display:grid;grid-template-columns:1fr auto;gap:10px;padding:13px 0;border-bottom:1px solid var(--line)}.cartline strong{font-size:13px}.cartline small{display:block;color:var(--muted);margin-top:4px}.qty{display:flex;align-items:center;gap:8px}.qty button{background:#263a58;color:white;border:0;border-radius:7px;width:27px;height:27px}.remove{color:#ff9b9b;background:none;border:0;font-size:11px;margin-top:5px}.totals{padding:14px 0;display:grid;gap:8px}.totalrow{display:flex;justify-content:space-between;color:#b7c5d9;font-size:13px}.totalrow.final{font-size:19px;font-weight:950;color:white}.free{color:var(--good);font-weight:900}form{display:grid;gap:11px;margin-top:14px}.field label{display:block;font-size:11px;color:#aabbd2;margin-bottom:6px;font-weight:800}.field input,.field textarea{width:100%;background:#0a1220;border:1px solid #2a3b55;color:white;border-radius:10px;padding:12px;outline:none}.field textarea{min-height:65px}.note{font-size:11px;color:var(--muted);line-height:1.5}.success{display:none;text-align:center;padding:25px 5px}.success .check{font-size:48px}.success p{color:#b8c7dc;line-height:1.55;font-size:13px}.error{display:none;color:#ffaaaa;font-size:12px;line-height:1.4}@media(max-width:420px){.product{grid-template-columns:100px 1fr}.photo{height:132px}.details h3{font-size:14px}.options{flex-wrap:wrap}.add{flex:1}}
-</style></head><body><main class="wrap"><header class="top"><div class="brand">PRIME <span>DROP</span></div><div class="pill">STREETWEAR SHOP</div></header><section class="hero"><div class="eyebrow">YOUR STYLE. YOUR DROP.</div><h1>EMELD KI A<br><span>STÍLUSOD.</span></h1><p>Válogatott streetwear darabok, egyszerű rendelés, közvetlenül Telegramon.</p><div class="hero-foot"><span class="tag">✦ Ingyenes GLS házhoz szállítás</span><span class="tag">✦ Egyszerű rendelés</span></div></section><div class="section-head"><h2>Termékek</h2><small id="countLabel">Betöltés…</small></div><nav class="categories" id="categories"></nav><section class="products" id="products"><div class="empty">Termékek betöltése…</div></section></main>
-<div class="cartbar"><button id="openCart"><span>🛒 Kosár · <b id="cartCount">0</b> db</span><span id="cartTotal">0 Ft →</span></button></div>
-<div class="modal" id="cartModal"><section class="sheet"><div class="sheet-head"><h2>🛒 Kosarad</h2><button class="close" data-close="cartModal">✕</button></div><div id="cartItems"></div><div class="totals"><div class="totalrow"><span>Részösszeg</span><b id="subtotal">0 Ft</b></div><div class="totalrow"><span>GLS házhoz szállítás</span><b class="free">INGYENES</b></div><div class="totalrow final"><span>Fizetendő</span><b id="grandTotal">0 Ft</b></div></div><button class="submit" id="toCheckout">Tovább az adatokhoz →</button></section></div>
-<div class="modal" id="checkoutModal"><section class="sheet"><div id="checkoutContent"><div class="sheet-head"><h2>Rendelés véglegesítése</h2><button class="close" data-close="checkoutModal">✕</button></div><p class="note">GLS házhoz szállítás · Ingyenes. Kérjük, pontos adatokat adj meg.</p><div id="checkoutSummary" class="note"></div><form id="orderForm"><div class="field"><label>Teljes név *</label><input name="fullName" autocomplete="name" required maxlength="100"></div><div class="field"><label>Telefonszám *</label><input name="phone" type="tel" autocomplete="tel" required maxlength="30"></div><div class="field"><label>E-mail cím *</label><input name="email" type="email" autocomplete="email" required maxlength="150"></div><div class="field"><label>Irányítószám *</label><input name="zip" autocomplete="postal-code" required maxlength="12"></div><div class="field"><label>Település *</label><input name="city" autocomplete="address-level2" required maxlength="100"></div><div class="field"><label>Utca, házszám, emelet/ajtó *</label><input name="address" autocomplete="street-address" required maxlength="180"></div><div class="field"><label>Megjegyzés (nem kötelező)</label><textarea name="note" maxlength="500"></textarea></div><div class="error" id="formError"></div><p class="note">A fizetés előre, banki átutalással történik. A rendelés leadásával hozzájárulsz az adatok rendelésteljesítéshez szükséges kezeléséhez.</p><button class="submit" id="submitOrder" type="submit">Rendelés leadása</button></form></div><div class="success" id="success"><div class="check">✅</div><h2>Rendelés elküldve!</h2><p>A rendelésedet továbbítottuk. A Telegram-bot üzenetben küldi a visszaigazolást és a fizetési tudnivalókat.</p><button class="submit" id="finish">Vissza a boltba</button></div></section></div>
-<script>
-const API_BASE="https://slezixs134678.pythonanywhere.com";
-const tg=window.Telegram?.WebApp;if(tg){tg.ready();tg.expand()}const money=n=>new Intl.NumberFormat('hu-HU').format(n)+' Ft';const $=id=>document.getElementById(id);let catalog=[],cart=[],activeCategory='Mind';function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-async function loadProducts(){try{const r=await fetch('./products.json',{cache:'no-store'});if(!r.ok)throw Error();catalog=(await r.json()).products.filter(p=>p.available);const cats=['Mind',...new Set(catalog.map(p=>p.category))];$('categories').innerHTML=cats.map(c=>`<button class="cat ${c===activeCategory?'active':''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('');$('categories').querySelectorAll('button').forEach(b=>b.onclick=()=>{activeCategory=b.dataset.cat;renderProducts()});renderProducts()}catch(e){$('products').innerHTML='<div class="empty">Nem sikerült betölteni a termékeket. Ellenőrizd a products.json fájlt.</div>'}}
-function renderProducts(){const list=catalog.filter(p=>activeCategory==='Mind'||p.category===activeCategory);$('countLabel').textContent=list.length+' elérhető termék';$('products').innerHTML=list.length?list.map(p=>`<article class="product"><div class="photo">${p.image?`<img src="${esc(p.image)}" alt="${esc(p.name)}">`:'PD'}</div><div class="details"><div class="category">${esc(p.category)}</div><h3>${esc(p.name)}</h3><div class="desc">${esc(p.description||'')}</div><div class="price">${money(p.price)} <small>/ db</small></div><div class="options">${p.sizes?.length?`<select class="size" aria-label="Méret">${p.sizes.map(s=>`<option>${esc(s)}</option>`).join('')}</select>`:''}${p.colors?.length?`<select class="color" aria-label="Szín">${p.colors.map(c=>`<option>${esc(c)}</option>`).join('')}</select>`:''}<button class="add" data-add="${esc(p.id)}">+ Kosárba</button></div></div></article>`).join(''):'<div class="empty">Ebben a kategóriában jelenleg nincs termék.</div>';$('products').querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>add(b.dataset.add,b.closest('.product')))}
-function add(id,card){const p=catalog.find(x=>x.id===id),size=card.querySelector('.size')?.value||'',color=card.querySelector('.color')?.value||'',key=[id,size,color].join('|'),found=cart.find(x=>x.key===key);if(found)found.qty++;else cart.push({key,id,size,color,qty:1});updateCart();tg?.HapticFeedback?.notificationOccurred('success')}
-function updateCart(){const count=cart.reduce((s,x)=>s+x.qty,0),total=cart.reduce((s,x)=>s+catalog.find(p=>p.id===x.id).price*x.qty,0);$('cartCount').textContent=count;$('cartTotal').textContent=money(total)+' →';$('subtotal').textContent=money(total);$('grandTotal').textContent=money(total);$('cartItems').innerHTML=cart.length?cart.map(x=>{const p=catalog.find(p=>p.id===x.id);return `<div class="cartline"><div><strong>${esc(p.name)}</strong><small>${[x.size,x.color].filter(Boolean).map(esc).join(' · ')}</small><small>${money(p.price)} / db</small><button class="remove" data-remove="${esc(x.key)}">Törlés</button></div><div class="qty"><button data-dec="${esc(x.key)}">−</button><b>${x.qty}</b><button data-inc="${esc(x.key)}">+</button></div></div>`}).join(''):'<div class="empty">A kosarad még üres.</div>';$('cartItems').querySelectorAll('[data-inc]').forEach(b=>b.onclick=()=>qty(b.dataset.inc,1));$('cartItems').querySelectorAll('[data-dec]').forEach(b=>b.onclick=()=>qty(b.dataset.dec,-1));$('cartItems').querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{cart=cart.filter(x=>x.key!==b.dataset.remove);updateCart()})}
-function qty(key,n){const x=cart.find(x=>x.key===key);if(!x)return;x.qty+=n;if(x.qty<1)cart=cart.filter(y=>y!==x);updateCart()}function show(id){$(id).classList.add('show')}function hide(id){$(id).classList.remove('show')}
-$('openCart').onclick=()=>{updateCart();show('cartModal')};document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>hide(b.dataset.close));$('toCheckout').onclick=()=>{if(!cart.length)return;hide('cartModal');const total=cart.reduce((s,x)=>s+catalog.find(p=>p.id===x.id).price*x.qty,0);$('checkoutSummary').textContent=`${cart.reduce((s,x)=>s+x.qty,0)} db termék · ${money(total)} · GLS szállítás ingyenes`;show('checkoutModal')};
-$('orderForm').onsubmit=async e=>{e.preventDefault();const err=$('formError'),btn=$('submitOrder');err.style.display='none';if(!tg?.initData){err.textContent='A rendelés leadásához Telegramon belül nyisd meg a webshopot.';err.style.display='block';return}btn.disabled=true;btn.textContent='Rendelés küldése…';const f=new FormData(e.target),payload={initData:tg.initData,customer:Object.fromEntries(['fullName','phone','email','zip','city','address','note'].map(k=>[k,f.get(k)])),items:cart.map(x=>({productId:x.id,size:x.size,color:x.color,quantity:x.qty}))};try{const r=await fetch(API_BASE+'/api/order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}),data=await r.json();if(!r.ok||!data.ok)throw Error(data.error||'Nem sikerült elküldeni a rendelést.');$('checkoutContent').style.display='none';$('success').style.display='block';cart=[];updateCart();tg.HapticFeedback?.notificationOccurred('success')}catch(ex){err.textContent=ex.message;err.style.display='block'}finally{btn.disabled=false;btn.textContent='Rendelés leadása'}};$('finish').onclick=()=>{hide('checkoutModal');$('checkoutContent').style.display='block';$('success').style.display='none';$('orderForm').reset()};loadProducts();
-</script></body></html>
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090d18">
+  <title>PRIME DROP | Streetwear Shop</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <style>
+    :root{--bg:#090d18;--panel:#111827;--blue:#3678ff;--cyan:#64c7ff;--text:#f5f8ff;--muted:#9aa9c1;--line:#25334a;--good:#37d69a}
+    *{box-sizing:border-box}
+    body{margin:0;background:radial-gradient(ellipse at 85% -10%,#173d77 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+    button,input,textarea,select{font:inherit}
+    button{cursor:pointer}
+    .wrap{max-width:760px;margin:auto;padding:18px 16px 105px}
+    .top{display:flex;justify-content:space-between;align-items:center;padding:7px 0 18px}
+    .brand{font-weight:1000;letter-spacing:2px;font-size:22px}
+    .brand span{color:var(--cyan)}
+    .pill{border:1px solid #31558d;color:#b9d7ff;background:#10213c;padding:7px 11px;border-radius:30px;font-size:11px;font-weight:800}
+    .hero{position:relative;overflow:hidden;border:1px solid #28466f;border-radius:25px;padding:27px 23px;background:linear-gradient(125deg,#132b50,#101827 62%,#142c4b);box-shadow:0 18px 55px #0005}
+    .hero:after{content:'PD';position:absolute;right:-5px;bottom:-42px;font-size:150px;font-weight:1000;color:#ffffff0a}
+    .eyebrow{font-size:11px;color:#8ecbff;letter-spacing:2px;font-weight:900}
+    .hero h1{font-size:clamp(32px,8vw,52px);line-height:.98;margin:13px 0 12px;letter-spacing:-2px;font-weight:1000}
+    .hero h1 span{color:var(--cyan)}
+    .hero p{color:#c0cee2;max-width:400px;line-height:1.5;font-size:14px;margin:0}
+    .hero-foot{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+    .tag{font-size:11px;border:1px solid #47628b;background:#ffffff0a;border-radius:20px;padding:7px 10px;color:#d6e8ff}
+    .section-head{display:flex;justify-content:space-between;align-items:end;margin:28px 2px 14px}
+    .section-head h2{font-size:20px;margin:0;font-weight:950}
+    .section-head small{color:var(--muted)}
+    .categories{display:flex;gap:8px;overflow:auto;padding:2px 0 13px}
+    .cat{white-space:nowrap;border:1px solid var(--line);background:#101827;color:#b7c5d9;border-radius:30px;padding:9px 14px;font-size:12px;font-weight:800}
+    .cat.active{background:var(--blue);border-color:var(--blue);color:white}
+    .products{display:grid;gap:13px}
+    .product{display:grid;grid-template-columns:118px 1fr;gap:14px;background:linear-gradient(145deg,#151f30,#101724);border:1px solid var(--line);border-radius:19px;padding:11px}
+    .photo{height:137px;border-radius:13px;background:linear-gradient(145deg,#203b60,#101827);display:flex;align-items:center;justify-content:center;overflow:hidden;color:#82bfff;font-weight:1000;font-size:26px}
+    .photo img{width:100%;height:100%;object-fit:cover}
+    .details{min-width:0;display:flex;flex-direction:column}
+    .category{font-size:10px;color:#7ebdff;font-weight:900;letter-spacing:1.2px;text-transform:uppercase}
+    .details h3{font-size:15px;line-height:1.2;margin:6px 0}
+    .desc{font-size:11px;color:var(--muted);line-height:1.4}
+    .price{font-size:18px;font-weight:950;margin-top:auto;padding-top:9px}
+    .price small{font-size:10px;color:var(--muted);font-weight:600}
+    .options{display:flex;gap:7px;margin-top:8px}
+    .options select{min-width:0;flex:1;background:#0c1422;color:#e9f2ff;border:1px solid #2b3e59;border-radius:9px;padding:8px;font-size:11px}
+    .add,.submit{border:0;background:linear-gradient(110deg,#3478ff,#2354d5);color:white;border-radius:10px;padding:10px 12px;font-size:12px;font-weight:900}
+    .empty{padding:25px;text-align:center;border:1px dashed var(--line);border-radius:15px;color:var(--muted);font-size:13px}
+    .cartbar{position:fixed;bottom:0;left:0;right:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#080d18ed;backdrop-filter:blur(16px);border-top:1px solid #26364d;z-index:5}
+    .cartbar button{max-width:728px;margin:auto;width:100%;display:flex;justify-content:space-between;border:0;border-radius:14px;background:linear-gradient(100deg,#3678ff,#2055cf);color:white;padding:15px 17px;font-weight:950}
+    .modal{display:none;position:fixed;inset:0;z-index:10;background:#050912e8;backdrop-filter:blur(8px);overflow:auto;padding:18px 12px}
+    .modal.show{display:block}
+    .sheet{max-width:650px;margin:20px auto;background:#111a29;border:1px solid #2b3c55;border-radius:22px;padding:20px}
+    .sheet-head{display:flex;justify-content:space-between;align-items:center}
+    .sheet h2{margin:0;font-size:21px}
+    .close{background:#26364d;border:0;color:white;border-radius:9px;padding:7px 11px}
+    .cartline{display:grid;grid-template-columns:1fr auto;gap:10px;padding:13px 0;border-bottom:1px solid var(--line)}
+    .cartline strong{font-size:13px}
+    .cartline small{display:block;color:var(--muted);margin-top:4px}
+    .qty{display:flex;align-items:center;gap:8px}
+    .qty button{background:#263a58;color:white;border:0;border-radius:7px;width:27px;height:27px}
+    .remove{color:#ff9b9b;background:none;border:0;font-size:11px;margin-top:5px}
+    .totals{padding:14px 0;display:grid;gap:8px}
+    .totalrow{display:flex;justify-content:space-between;color:#b7c5d9;font-size:13px}
+    .totalrow.final{font-size:19px;font-weight:950;color:white}
+    .free{color:var(--good);font-weight:900}
+    form{display:grid;gap:11px;margin-top:14px}
+    .field label{display:block;font-size:11px;color:#aabbd2;margin-bottom:6px;font-weight:800}
+    .field input,.field textarea{width:100%;background:#0a1220;border:1px solid #2a3b55;color:white;border-radius:10px;padding:12px;outline:none}
+    .field textarea{min-height:65px}
+    .note{font-size:11px;color:var(--muted);line-height:1.5}
+    .success{display:none;text-align:center;padding:25px 5px}
+    .success .check{font-size:48px}
+    .success p{color:#b8c7dc;line-height:1.55;font-size:13px}
+    .error{display:none;color:#ffaaaa;font-size:12px;line-height:1.4}
+    @media(max-width:420px){
+      .product{grid-template-columns:100px 1fr}
+      .photo{height:132px}
+      .details h3{font-size:14px}
+      .options{flex-wrap:wrap}
+      .add{flex:1}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div class="brand">PRIME <span>DROP</span></div>
+      <div class="pill">STREETWEAR SHOP</div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">YOUR STYLE. YOUR DROP.</div>
+      <h1>EMELD KI A<br><span>STÍLUSOD.</span></h1>
+      <p>Válogatott streetwear darabok, egyszerű rendelés, közvetlenül Telegramon.</p>
+      <div class="hero-foot">
+        <span class="tag">✦ Ingyenes GLS házhoz szállítás</span>
+        <span class="tag">✦ Egyszerű rendelés</span>
+      </div>
+    </section>
+
+    <div class="section-head">
+      <h2>Termékek</h2>
+      <small id="countLabel">Betöltés…</small>
+    </div>
+    <nav class="categories" id="categories"></nav>
+    <section class="products" id="products">
+      <div class="empty">Termékek betöltése…</div>
+    </section>
+  </main>
+
+  <div class="cartbar">
+    <button id="openCart">
+      <span>🛒 Kosár · <b id="cartCount">0</b> db</span>
+      <span id="cartTotal">0 Ft →</span>
+    </button>
+  </div>
+
+  <div class="modal" id="cartModal">
+    <section class="sheet">
+      <div class="sheet-head">
+        <h2>🛒 Kosarad</h2>
+        <button class="close" data-close="cartModal">✕</button>
+      </div>
+      <div id="cartItems"></div>
+      <div class="totals">
+        <div class="totalrow"><span>Részösszeg</span><b id="subtotal">0 Ft</b></div>
+        <div class="totalrow"><span>GLS házhoz szállítás</span><b class="free">INGYENES</b></div>
+        <div class="totalrow final"><span>Fizetendő</span><b id="grandTotal">0 Ft</b></div>
+      </div>
+      <button class="submit" id="toCheckout">Tovább az adatokhoz →</button>
+    </section>
+  </div>
+
+  <div class="modal" id="checkoutModal">
+    <section class="sheet">
+      <div id="checkoutContent">
+        <div class="sheet-head">
+          <h2>Rendelés véglegesítése</h2>
+          <button class="close" data-close="checkoutModal">✕</button>
+        </div>
+        <p class="note">GLS házhoz szállítás · Ingyenes. Kérjük, pontos adatokat adj meg.</p>
+        <div id="checkoutSummary" class="note"></div>
+
+        <form id="orderForm">
+          <div class="field"><label for="fullName">Teljes név *</label><input id="fullName" name="fullName" autocomplete="name" required maxlength="100"></div>
+          <div class="field"><label for="phone">Telefonszám *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="30"></div>
+          <div class="field"><label for="email">E-mail cím *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="150"></div>
+          <div class="field"><label for="zip">Irányítószám *</label><input id="zip" name="zip" autocomplete="postal-code" required maxlength="12"></div>
+          <div class="field"><label for="city">Település *</label><input id="city" name="city" autocomplete="address-level2" required maxlength="100"></div>
+          <div class="field"><label for="address">Utca, házszám, emelet/ajtó *</label><input id="address" name="address" autocomplete="street-address" required maxlength="180"></div>
+          <div class="field"><label for="note">Megjegyzés (nem kötelező)</label><textarea id="note" name="note" maxlength="500"></textarea></div>
+          <div class="error" id="formError"></div>
+          <p class="note">A fizetés előre, banki átutalással történik. A rendelés leadásával hozzájárulsz az adatok rendelésteljesítéshez szükséges kezeléséhez.</p>
+          <button class="submit" id="submitOrder" type="submit">Rendelés leadása</button>
+        </form>
+      </div>
+
+      <div class="success" id="success">
+        <div class="check">✅</div>
+        <h2>Rendelés elküldve!</h2>
+        <p>A rendelésedet továbbítottuk. A Telegram-bot üzenetben küldi a visszaigazolást és a fizetési tudnivalókat.</p>
+        <button class="submit" id="finish">Vissza a boltba</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const API_BASE = 'https://slezixs134678.pythonanywhere.com';
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+    }
+
+    const $ = id => document.getElementById(id);
+    const money = n => new Intl.NumberFormat('hu-HU').format(n) + ' Ft';
+    let catalog = [];
+    let cart = [];
+    let activeCategory = 'Mind';
+
+    function esc(value) {
+      const entities = {
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      };
+      return String(value ?? '').replace(/[&<>"']/g, char => entities[char]);
+    }
+
+    async function loadProducts() {
+      try {
+        const response = await fetch('./products.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error();
+        const data = await response.json();
+        catalog = data.products.filter(product => product.available);
+
+        const categories = ['Mind', ...new Set(catalog.map(product => product.category))];
+        $('categories').innerHTML = categories.map(category => `
+          <button class="cat ${category === activeCategory ? 'active' : ''}"
+                  data-cat="${esc(category)}">${esc(category)}</button>
+        `).join('');
+
+        $('categories').querySelectorAll('button').forEach(button => {
+          button.onclick = () => {
+            activeCategory = button.dataset.cat;
+            renderProducts();
+            $('categories').querySelectorAll('button').forEach(item => {
+              item.classList.toggle('active', item === button);
+            });
+          };
+        });
+
+        renderProducts();
+
+        // A Telegram-linkben kapott termékhez csak a kártyák betöltése után görgetünk.
+        const productId = tg?.initDataUnsafe?.start_param
+          || new URLSearchParams(window.location.search).get('tgWebAppStartParam');
+
+        if (productId) {
+          const card = document.getElementById('card-' + productId);
+          card?.scrollIntoView({ block: 'center' });
+        }
+      } catch {
+        $('products').innerHTML = '<div class="empty">Nem sikerült betölteni a termékeket. Ellenőrizd a products.json fájlt.</div>';
+      }
+    }
+
+    function renderProducts() {
+      const list = catalog.filter(product =>
+        activeCategory === 'Mind' || product.category === activeCategory
+      );
+      $('countLabel').textContent = list.length + ' elérhető termék';
+
+      $('products').innerHTML = list.length ? list.map(p => `
+        <article class="product" id="card-${esc(p.id)}">
+          <div class="photo">
+            ${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}">` : 'PD'}
+          </div>
+          <div class="details">
+            <div class="category">${esc(p.category)}</div>
+            <h3>${esc(p.name)}</h3>
+            <div class="desc">${esc(p.description || '')}</div>
+            <div class="price">${money(p.price)} <small>/ db</small></div>
+            <div class="options">
+              ${p.sizes?.length ? `
+                <select class="size" aria-label="Méret">
+                  ${p.sizes.map(size => `<option>${esc(size)}</option>`).join('')}
+                </select>` : ''}
+              ${p.colors?.length ? `
+                <select class="color" aria-label="Szín">
+                  ${p.colors.map(color => `<option>${esc(color)}</option>`).join('')}
+                </select>` : ''}
+              <button class="add" data-add="${esc(p.id)}">+ Kosárba</button>
+            </div>
+          </div>
+        </article>
+      `).join('') : '<div class="empty">Ebben a kategóriában jelenleg nincs termék.</div>';
+
+      $('products').querySelectorAll('[data-add]').forEach(button => {
+        button.onclick = () => add(button.dataset.add, button.closest('.product'));
+      });
+    }
+
+    function add(id, card) {
+      const size = card.querySelector('.size')?.value || '';
+      const color = card.querySelector('.color')?.value || '';
+      const key = [id, size, color].join('|');
+      const found = cart.find(item => item.key === key);
+      if (found) found.qty++;
+      else cart.push({ key, id, size, color, qty: 1 });
+
+      updateCart();
+      tg?.HapticFeedback?.notificationOccurred('success');
+    }
+
+    function updateCart() {
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      const total = cart.reduce((sum, item) =>
+        sum + catalog.find(p => p.id === item.id).price * item.qty, 0
+      );
+
+      $('cartCount').textContent = count;
+      $('cartTotal').textContent = money(total) + ' →';
+      $('subtotal').textContent = money(total);
+      $('grandTotal').textContent = money(total);
+
+      $('cartItems').innerHTML = cart.length ? cart.map(item => {
+        const p = catalog.find(product => product.id === item.id);
+        return `
+          <div class="cartline">
+            <div>
+              <strong>${esc(p.name)}</strong>
+              <small>${[item.size, item.color].filter(Boolean).map(esc).join(' · ')}</small>
+              <small>${money(p.price)} / db</small>
+              <button class="remove" data-remove="${esc(item.key)}">Törlés</button>
+            </div>
+            <div class="qty">
+              <button data-dec="${esc(item.key)}">−</button>
+              <b>${item.qty}</b>
+              <button data-inc="${esc(item.key)}">+</button>
+            </div>
+          </div>`;
+      }).join('') : '<div class="empty">A kosarad még üres.</div>';
+
+      $('cartItems').querySelectorAll('[data-inc]').forEach(button => {
+        button.onclick = () => qty(button.dataset.inc, 1);
+      });
+      $('cartItems').querySelectorAll('[data-dec]').forEach(button => {
+        button.onclick = () => qty(button.dataset.dec, -1);
+      });
+      $('cartItems').querySelectorAll('[data-remove]').forEach(button => {
+        button.onclick = () => {
+          cart = cart.filter(item => item.key !== button.dataset.remove);
+          updateCart();
+        };
+      });
+    }
+
+    function qty(key, change) {
+      const item = cart.find(entry => entry.key === key);
+      if (!item) return;
+      item.qty += change;
+      if (item.qty < 1) cart = cart.filter(entry => entry.key !== key);
+      updateCart();
+    }
+
+    function show(id) { $(id).classList.add('show'); }
+    function hide(id) { $(id).classList.remove('show'); }
+
+    $('openCart').onclick = () => {
+      updateCart();
+      show('cartModal');
+    };
+
+    document.querySelectorAll('[data-close]').forEach(button => {
+      button.onclick = () => hide(button.dataset.close);
+    });
+
+    $('toCheckout').onclick = () => {
+      if (!cart.length) return;
+      hide('cartModal');
+      const total = cart.reduce((sum, item) =>
+        sum + catalog.find(p => p.id === item.id).price * item.qty, 0
+      );
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      $('checkoutSummary').textContent = `${count} db termék · ${money(total)} · GLS szállítás ingyenes`;
+      show('checkoutModal');
+    };
+
+    $('orderForm').onsubmit = async event => {
+      event.preventDefault();
+      const errorBox = $('formError');
+      const button = $('submitOrder');
+      errorBox.style.display = 'none';
+
+      if (!tg?.initData) {
+        errorBox.textContent = 'A rendelés leadásához Telegramon belül nyisd meg a webshopot.';
+        errorBox.style.display = 'block';
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = 'Rendelés küldése…';
+
+      try {
+        const form = new FormData(event.target);
+        const fields = ['fullName', 'phone', 'email', 'zip', 'city', 'address', 'note'];
+        const payload = {
+          initData: tg.initData,
+          customer: Object.fromEntries(fields.map(key => [key, form.get(key)])),
+          items: cart.map(item => ({
+            productId: item.id,
+            size: item.size,
+            color: item.color,
+            quantity: item.qty
+          }))
+        };
+
+        const response = await fetch(API_BASE + '/api/order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+        if (!response.ok || !data.ok) {
+          throw new Error(data.error || 'Nem sikerült elküldeni a rendelést.');
+        }
+
+        $('checkoutContent').style.display = 'none';
+        $('success').style.display = 'block';
+        cart = [];
+        updateCart();
+        tg.HapticFeedback?.notificationOccurred('success');
+      } catch (error) {
+        errorBox.textContent = error.message;
+        errorBox.style.display = 'block';
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Rendelés leadása';
+      }
+    };
+
+    $('finish').onclick = () => {
+      hide('checkoutModal');
+      $('checkoutContent').style.display = 'block';
+      $('success').style.display = 'none';
+      $('orderForm').reset();
+    };
+
+    loadProducts();
+  </script>
+</body>
+</html>
