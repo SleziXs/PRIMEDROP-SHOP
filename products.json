@@ -1,3 +1,4 @@
+
 {
   "storeName": "PRIME DROP",
   "currency": "HUF",
@@ -41,18 +42,35 @@
       "category": "Kabátok",
       "price": 25000,
       "description": "Új, párnázott téli kabát. Kapucnis kialakítás, cipzáras zsebek, kényelmes viselet.",
-      "image": "images/5859.png",
+      "image": "images/ChatGPT-kép 2026. nov. 25. 19_21_25.webp",
       "images": [
-        "images/5861.png",
-        "images/5860.png",
-        "images/5864.png",
-        "images/5859.png",
-        "images/5862.png",
-        "images/5863.png",
-        "images/5857.png",
-        "images/5856.png",
-        "images/5858.png"
+        "images/ChatGPT-kép 2026. nov. 25. 19_21_25.webp",
+        "images/ChatGPT-kép 2026. nov. 25. 19_21_53.webp",
+        "images/ChatGPT-kép 2026. nov. 25. 19_22_05.webp",
+        "images/ChatGPT-kép 2026. nov. 25. 19_22_14.webp",
+        "images/ChatGPT-kép 2026. nov. 25. 19_22_19.webp",
+        "images/ChatGPT-kép 2026. nov. 25. 19_22_09.webp",
+        "images/ChatGPT-kép 2026. nov. 25. 19_22_27.webp",
+        "images/ChatGPT-kép 2026. nov. 25. 19_22_33.webp",
+        "images/ChatGPT-kép 2026. nov. 25. 19_22_23.webp"
       ],
+      "colorImages": {
+        "Kék": [
+          "images/ChatGPT-kép 2026. nov. 25. 19_21_25.webp",
+          "images/ChatGPT-kép 2026. nov. 25. 19_21_53.webp",
+          "images/ChatGPT-kép 2026. nov. 25. 19_22_05.webp"
+        ],
+        "Fekete": [
+          "images/ChatGPT-kép 2026. nov. 25. 19_22_14.webp",
+          "images/ChatGPT-kép 2026. nov. 25. 19_22_19.webp",
+          "images/ChatGPT-kép 2026. nov. 25. 19_22_09.webp"
+        ],
+        "Fehér": [
+          "images/ChatGPT-kép 2026. nov. 25. 19_22_27.webp",
+          "images/ChatGPT-kép 2026. nov. 25. 19_22_33.webp",
+          "images/ChatGPT-kép 2026. nov. 25. 19_22_23.webp"
+        ]
+      },
       "available": true,
       "sizes": ["S", "M", "L", "XL", "XXL"],
       "colors": ["Kék", "Fekete", "Fehér"]
