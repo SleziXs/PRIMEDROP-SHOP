@@ -21,7 +21,7 @@
       "price": 14990,
       "description": "Fehér póló és fehér nadrág egy szettben.",
       "image": "",
-      "available": true,
+      "available": false,
       "sizes": ["130cm (125–130cm)"],
       "colors": ["Fehér"]
     },
@@ -29,10 +29,10 @@
       "id": "product_003",
       "name": "Polo Ralph Lauren zokni szett (5 pár)",
       "category": "Kiegészítők",
-      "price": 6000,
+      "price": 3590,
       "description": "Öt pár zokni egy dobozban.",
       "image": "",
-      "available": false,
+      "available": true,
       "sizes": ["Egy méret"],
       "colors": ["Vegyes"]
     },
