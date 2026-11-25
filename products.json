@@ -29,12 +29,20 @@
       "id": "product_003",
       "name": "Polo Ralph Lauren zokni szett (5 pár)",
       "category": "Kiegészítők",
-      "price": 6000,
-      "description": "Öt pár zokni egy dobozban.",
-      "image": "",
+      "price": 3590,
+      "description": "5 pár zokni, dobozos kiszerelésben.",
+      "image": "images/zokni-fekete.webp",
+      "images": [
+        "images/zokni-fekete.webp",
+        "images/zokni-bezs.webp"
+      ],
+      "colorImages": {
+        "Fekete": ["images/zokni-fekete.webp"],
+        "Bézs": ["images/zokni-bezs.webp"]
+      },
       "available": true,
       "sizes": ["Egy méret"],
-      "colors": ["Vegyes"]
+      "colors": ["Fekete", "Bézs"]
     },
     {
       "id": "product_004",
