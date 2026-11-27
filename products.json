@@ -1,4 +1,3 @@
-
 {
   "storeName": "PRIME DROP",
   "currency": "HUF",
@@ -82,6 +81,53 @@
       "available": true,
       "sizes": ["S", "M", "L", "XL", "XXL"],
       "colors": ["Kék", "Fekete", "Fehér"]
+    },
+    {
+      "id": "product_005",
+      "name": "Polo Ralph Lauren félcipzáras kötött pulóver",
+      "category": "Pulóverek",
+      "price": 15999,
+      "description": "Csavart kötésmintás pulóver állógallérral, rövid cipzárral és hímzett mellkasi logóval.",
+      "available": true,
+      "sizes": ["S", "M", "L"],
+      "colors": ["Fekete", "Sötétkék", "Szürke", "Fehér"],
+      "image": "images/rl-kotott-pulover/fekete-elol.webp",
+      "images": [
+        "images/rl-kotott-pulover/fekete-elol.webp",
+        "images/rl-kotott-pulover/fekete-45-fok.webp",
+        "images/rl-kotott-pulover/fekete-hatul.webp",
+        "images/rl-kotott-pulover/sotetkek-elol.webp",
+        "images/rl-kotott-pulover/sotetkek-45-fok.webp",
+        "images/rl-kotott-pulover/sotetkek-hatul.webp",
+        "images/rl-kotott-pulover/szurke-elol.webp",
+        "images/rl-kotott-pulover/szurke-45-fok.webp",
+        "images/rl-kotott-pulover/szurke-hatul.webp",
+        "images/rl-kotott-pulover/feher-elol.webp",
+        "images/rl-kotott-pulover/feher-45-fok.webp",
+        "images/rl-kotott-pulover/feher-hatul.webp"
+      ],
+      "colorImages": {
+        "Fekete": [
+          "images/rl-kotott-pulover/fekete-elol.webp",
+          "images/rl-kotott-pulover/fekete-45-fok.webp",
+          "images/rl-kotott-pulover/fekete-hatul.webp"
+        ],
+        "Sötétkék": [
+          "images/rl-kotott-pulover/sotetkek-elol.webp",
+          "images/rl-kotott-pulover/sotetkek-45-fok.webp",
+          "images/rl-kotott-pulover/sotetkek-hatul.webp"
+        ],
+        "Szürke": [
+          "images/rl-kotott-pulover/szurke-elol.webp",
+          "images/rl-kotott-pulover/szurke-45-fok.webp",
+          "images/rl-kotott-pulover/szurke-hatul.webp"
+        ],
+        "Fehér": [
+          "images/rl-kotott-pulover/feher-elol.webp",
+          "images/rl-kotott-pulover/feher-45-fok.webp",
+          "images/rl-kotott-pulover/feher-hatul.webp"
+        ]
+      }
     }
   ]
 }
