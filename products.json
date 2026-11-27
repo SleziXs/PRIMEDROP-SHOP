@@ -30,14 +30,14 @@
       "category": "Kiegészítők",
       "price": 3590,
       "description": "5 pár zokni, dobozos kiszerelésben.",
-      "image": "images/zokni-fekete.webp",
+      "image": "images/zokni-fekete.webp.webp",
       "images": [
-        "images/zokni-fekete.webp",
-        "images/zokni-bezs.webp"
+        "images/zokni-fekete.webp.webp",
+        "images/zokni-bezs.webp.webp"
       ],
       "colorImages": {
-        "Fekete": ["images/zokni-fekete.webp"],
-        "Bézs": ["images/zokni-bezs.webp"]
+        "Fekete": ["images/zokni-fekete.webp.webp"],
+        "Bézs": ["images/zokni-bezs.webp.webp"]
       },
       "available": true,
       "sizes": ["Egy méret"],
@@ -91,41 +91,41 @@
       "available": true,
       "sizes": ["S", "M", "L"],
       "colors": ["Fekete", "Sötétkék", "Szürke", "Fehér"],
-      "image": "images/rl-kotott-pulover/fekete-elol.webp",
+      "image": "images/fekete-elol.webp",
       "images": [
-        "images/rl-kotott-pulover/fekete-elol.webp",
-        "images/rl-kotott-pulover/fekete-45-fok.webp",
-        "images/rl-kotott-pulover/fekete-hatul.webp",
-        "images/rl-kotott-pulover/sotetkek-elol.webp",
-        "images/rl-kotott-pulover/sotetkek-45-fok.webp",
-        "images/rl-kotott-pulover/sotetkek-hatul.webp",
-        "images/rl-kotott-pulover/szurke-elol.webp",
-        "images/rl-kotott-pulover/szurke-45-fok.webp",
-        "images/rl-kotott-pulover/szurke-hatul.webp",
-        "images/rl-kotott-pulover/feher-elol.webp",
-        "images/rl-kotott-pulover/feher-45-fok.webp",
-        "images/rl-kotott-pulover/feher-hatul.webp"
+        "images/fekete-elol.webp",
+        "images/fekete-45-fok.webp",
+        "images/fekete-hatul.webp",
+        "images/sotetkek-elol.webp",
+        "images/sotetkek-45-fok.webp",
+        "images/sotetkek-hatul.webp",
+        "images/szurke-elol.webp",
+        "images/szurke-45-fok.webp",
+        "images/szurke-hatul.webp",
+        "images/feher-elol.webp",
+        "images/feher-45-fok.webp",
+        "images/feher-hatul.webp"
       ],
       "colorImages": {
         "Fekete": [
-          "images/rl-kotott-pulover/fekete-elol.webp",
-          "images/rl-kotott-pulover/fekete-45-fok.webp",
-          "images/rl-kotott-pulover/fekete-hatul.webp"
+          "images/fekete-elol.webp",
+          "images/fekete-45-fok.webp",
+          "images/fekete-hatul.webp"
         ],
         "Sötétkék": [
-          "images/rl-kotott-pulover/sotetkek-elol.webp",
-          "images/rl-kotott-pulover/sotetkek-45-fok.webp",
-          "images/rl-kotott-pulover/sotetkek-hatul.webp"
+          "images/sotetkek-elol.webp",
+          "images/sotetkek-45-fok.webp",
+          "images/sotetkek-hatul.webp"
         ],
         "Szürke": [
-          "images/rl-kotott-pulover/szurke-elol.webp",
-          "images/rl-kotott-pulover/szurke-45-fok.webp",
-          "images/rl-kotott-pulover/szurke-hatul.webp"
+          "images/szurke-elol.webp",
+          "images/szurke-45-fok.webp",
+          "images/szurke-hatul.webp"
         ],
         "Fehér": [
-          "images/rl-kotott-pulover/feher-elol.webp",
-          "images/rl-kotott-pulover/feher-45-fok.webp",
-          "images/rl-kotott-pulover/feher-hatul.webp"
+          "images/feher-elol.webp",
+          "images/feher-45-fok.webp",
+          "images/feher-hatul.webp"
         ]
       }
     }
